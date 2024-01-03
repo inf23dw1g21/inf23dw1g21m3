@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   mysql:
-    image: mysql:5.7
+    image: inf23dwg21/webhoster1.0:mysql5.7
     container_name: mysql
     ports:
       - "3307:3306"
@@ -20,7 +20,7 @@ services:
     - internalnet
 
   app:
-    image: node:20
+    image: inf23dwg21/webhoster1.0:node20
     container_name: app
     build:
       context: .

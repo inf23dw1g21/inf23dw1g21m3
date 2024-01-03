@@ -1,22 +1,23 @@
-DROP TABLE IF EXISTS `webhoster`;
+
+DROP DATABASE IF EXISTS webhoster;
 CREATE DATABASE webhoster;
 use webhoster;
 
-DROP TABLE IF EXISTS `plano`;
+DROP TABLE IF EXISTS plano;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `plano` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tipo_de_plano` varchar(512) NOT NULL,
-  `periodicidade` varchar(512) NOT NULL,
-  `preco` int NOT NULL,
-  `armazenamento` varchar(512) NOT NULL,
-  `numero_de_contas_email` int NOT NULL,
-  `numero_de_dominios` int NOT NULL,
-  `largura_de_banda` varchar(512) NOT NULL,
-  `fidelizacao` varchar(512) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE plano (
+   id int NOT NULL AUTO_INCREMENT,
+  tipo_de_plano varchar(512) NOT NULL,
+  periodicidade varchar(512) NOT NULL,
+  preco int NOT NULL,
+  armazenamento varchar(512) NOT NULL,
+  numero_de_contas_email int NOT NULL,
+  numero_de_dominios int NOT NULL,
+  largura_de_banda varchar(512) NOT NULL,
+  fidelizacao varchar(512) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 INSERT INTO plano VALUES
 (1, 'Básico', 'Mensal', 9.99, '10 GB', 1, 1, 'Ilimitada', 'Nenhuma'),
@@ -31,21 +32,21 @@ INSERT INTO plano VALUES
 (10, 'Ultra','Anual', 499.99, '500 GB', 50, 20, 'Ilimitada', '5 meses grátis');
 
 
-DROP TABLE IF EXISTS `cliente`;
+DROP TABLE IF EXISTS cliente;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cliente` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(512) NOT NULL,
-  `tipo_de_conta` varchar(512) NOT NULL,
-  `numero_fiscal` varchar(512) NOT NULL,
-  `email` varchar(512) NOT NULL,
-  `contacto` varchar(512) NOT NULL,
-  `periodicidade_de_pagamento` varchar(512) NOT NULL,
-  `data_ultimo_pagamento` datetime NOT NULL,
-  `plano` int DEFAULT NULL,
+CREATE TABLE cliente (
+  id int NOT NULL AUTO_INCREMENT,
+  nome varchar(512) NOT NULL,
+  tipo_de_conta varchar(512) NOT NULL,
+  numero_fiscal varchar(512) NOT NULL,
+  email varchar(512) NOT NULL,
+  contacto varchar(512) NOT NULL,
+  periodicidade_de_pagamento varchar(512) NOT NULL,
+  data_ultimo_pagamento datetime NOT NULL,
+  plano int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 -- Inserir dados na tabela clientes
 INSERT INTO cliente VALUES
@@ -80,19 +81,19 @@ INSERT INTO cliente VALUES
 (29, 'Marco Dias', 'Empresarial', '909090909', 'marco@dias.com', '990909090',  'Mensal', '2023-11-30',10),
 (30, 'Laura Monteiro', 'Pessoal', '010101010', 'laura@monteiro.com', '901010101', 'Anual', '2023-12-31',5);
 
-DROP TABLE IF EXISTS `dominio`;
+DROP TABLE IF EXISTS dominio;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dominio` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(512) NOT NULL,
-  `codigo_TLD` varchar(512) NOT NULL,
-  `estado` tinyint(1) NOT NULL,
-  `data_de_inicio` datetime NOT NULL,
-  `data_de_fim` datetime NOT NULL,
-  `cliente` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE dominio (
+  id int NOT NULL AUTO_INCREMENT,
+  nome varchar(512) NOT NULL,
+  codigo_TLD varchar(512) NOT NULL,
+  estado tinyint(1) NOT NULL,
+  data_de_inicio datetime NOT NULL,
+  data_de_fim datetime NOT NULL,
+  cliente int DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 -- Inserir dados na tabela dominios
 INSERT INTO dominio VALUES
@@ -127,18 +128,18 @@ INSERT INTO dominio VALUES
 (29, 'dias', '.net', true, '2023-01-01', '2024-01-01', 29),
 (30, 'monteiro', '.net', true, '2023-01-01', '2024-01-01', 30);
 
-DROP TABLE IF EXISTS `pagamento`;
+DROP TABLE IF EXISTS pagamento;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pagamento` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `timestamp` datetime NOT NULL,
-  `valor` int NOT NULL,
-  `metodo_de_pagamento` varchar(512) NOT NULL,
-  `numero_de_transacao` varchar(512) NOT NULL,
-  `cliente` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE pagamento (
+  id int NOT NULL AUTO_INCREMENT,
+  timestamp datetime NOT NULL,
+  valor int NOT NULL,
+  metodo_de_pagamento varchar(512) NOT NULL,
+  numero_de_transacao varchar(512) NOT NULL,
+  cliente int DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 -- Inserir dados na tabela pagamentos
 INSERT INTO pagamento VALUES
