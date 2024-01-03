@@ -1,28 +1,26 @@
-# Check out https://hub.docker.com/_/node to select a new base image
-FROM docker.io/library/node:18-slim
+####### MYSQL ########
+FROM mysql:5.7
+RUN chown -R mysql:root /var/lib/mysql
+ENV MYSQL_DATABASE=webhoster
+ENV MYSQL_ROOT_PASSWORD=secret
+ENV MYSQL_PASSWORD=secret
 
-# Set to a non-root built-in user `node`
+ADD ./database/m2_webhoster.sql /etc/mysql/m2_webhoster.sql
+
+RUN sed -i 's/MYSQL_DATABASE/'${MYSQL_DATABASE}'/g' /etc/mysql/m2_webhoster.sql
+RUN cp /etc/mysql/m2_webhoster.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
+
+####### NODE JS ######
+FROM node:20
 USER node
-
-# Create app directory (with user `node`)
 RUN mkdir -p /home/node/app
-
+RUN chown -R node /home/node/app
 WORKDIR /home/node/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
 COPY --chown=node package*.json ./
-
-RUN npm install
-
-# Bundle app source code
 COPY --chown=node . .
-
-RUN npm run build
-
-# Bind to all network interfaces so that it can be mapped to the host OS
-ENV HOST=0.0.0.0 PORT=3000
-
-EXPOSE ${PORT}
-CMD [ "node", "." ]
+RUN chown -R node /home/node/app
+RUN npm install
+EXPOSE 3000
+CMD ["sh", "-c", "sleep 10 && npm start"]

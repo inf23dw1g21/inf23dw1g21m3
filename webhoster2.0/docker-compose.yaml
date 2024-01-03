@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    expose:
+     - "3306"
+    volumes:
+      - ./database/m2_webhoster.sql:/docker-entrypoint-initdb.d/m2_webhoster.sql
+    restart: always
+    environment:
+      MYSQL_DATABASE: webhoster
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret 
+      SERVICE_TAGS: prod
+      SERVICE_NAME: mysql
+    networks:
+    - internalnet
+
+  app:
+    image: node:20
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_PASSWORD: secret 
+      MYSQL_DATABASE: webhoster
+      MYSQL_LOCAL_PORT: 3307
+      MYSQL_DOCKER_PORT: 3306
+      MYSQL_CONNECTION_LIMIT: 20
+      SERVICE_TAGS: prod
+      SERVICE_NAME: nodeapp
+      SERVER_PORT: 3000
+    depends_on:
+      - mysql
+    command: ["./database/wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
+    networks:
+    - internalnet
+
+networks:
+   internalnet:
+    driver: bridge
