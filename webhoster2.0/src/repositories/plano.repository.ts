@@ -1,6 +1,6 @@
 import {Getter, inject} from '@loopback/core';
 import {DefaultCrudRepository, HasManyRepositoryFactory, repository} from '@loopback/repository';
-import {WebhosterDataSource} from '../datasources';
+import {DbDataSource} from '../datasources';
 import {Cliente, Plano, PlanoRelations} from '../models';
 import { ClienteRepository } from './cliente.repository';
 
@@ -14,13 +14,13 @@ export class PlanoRepository extends DefaultCrudRepository<
     typeof Plano.prototype.id
     >;
   constructor(
-    @inject('datasources.webhoster') dataSource: WebhosterDataSource,
+    @inject('datasources.db') dataSource: DbDataSource,
     @repository.getter('ClienteRepository')
     clienteRepositoryGetter: Getter<ClienteRepository>,
   ) {
     super(Plano, dataSource);
     this.clientesPlano = this.createHasManyRepositoryFactoryFor(
-      'clientesPlano',
+      'clientes',
       clienteRepositoryGetter,
     );
   }

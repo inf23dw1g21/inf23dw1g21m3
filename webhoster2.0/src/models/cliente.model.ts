@@ -41,6 +41,7 @@ export class Cliente extends Entity {
     required: true,
   })
   contacto: string;
+
   @property({
     type: 'string',
     required: true,
@@ -53,14 +54,14 @@ export class Cliente extends Entity {
   })
   data_ultimo_pagamento: string;
 
-  @belongsTo(() => Plano, {name: 'clientes'})
+  @belongsTo(() => Plano, {name: 'plano'})
   plano: number;
 
   @hasMany(() => Dominio, {keyTo: 'cliente'})
-  ClienteDominios: Dominio[];
+  dominios: Dominio[];
 
   @hasMany(() => Pagamento, {keyTo: 'cliente'})
-  clientePagamentos: Pagamento[];
+  pagamentos: Pagamento[];
 
   constructor(data?: Partial<Cliente>) {
     super(data);
@@ -68,7 +69,7 @@ export class Cliente extends Entity {
 }
 
 export interface ClienteRelations {
-  // describe navigational properties here
+  // Descreva as propriedades de navegação aqui
 }
 
 export type ClienteWithRelations = Cliente & ClienteRelations;

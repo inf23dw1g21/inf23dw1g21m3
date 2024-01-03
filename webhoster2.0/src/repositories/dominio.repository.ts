@@ -1,8 +1,8 @@
 import {Getter, inject} from '@loopback/core';
 import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
-import {WebhosterDataSource} from '../datasources';
 import {Cliente, Dominio, DominioRelations} from '../models';
 import { ClienteRepository } from './cliente.repository';
+import { DbDataSource } from '../datasources/db.datasource';
 
 export class DominioRepository extends DefaultCrudRepository<
   Dominio,
@@ -14,7 +14,7 @@ export class DominioRepository extends DefaultCrudRepository<
     typeof Dominio.prototype.id
   >;
   constructor(
-    @inject('datasources.webhoster') dataSource: WebhosterDataSource,
+    @inject('datasources.db') dataSource: DbDataSource,
     @repository.getter('ClienteRepository')
     clienteRepositoryGetter: Getter<ClienteRepository>,
   ) {

@@ -26,7 +26,7 @@ export class PagamentoController {
     public pagamentoRepository : PagamentoRepository,
   ) {}
 
-  @post('/pagamento')
+  @post('/pagamentos')
   @response(200, {
     description: 'Pagamento model instance',
     content: {'application/json': {schema: getModelSchemaRef(Pagamento)}},
@@ -47,7 +47,7 @@ export class PagamentoController {
     return this.pagamentoRepository.create(pagamento);
   }
 
-  @get('/pagamento/count')
+  @get('/pagamentos/count')
   @response(200, {
     description: 'Pagamento model count',
     content: {'application/json': {schema: CountSchema}},
@@ -58,7 +58,7 @@ export class PagamentoController {
     return this.pagamentoRepository.count(where);
   }
 
-  @get('/pagamento')
+  @get('/pagamentos')
   @response(200, {
     description: 'Array of Pagamento model instances',
     content: {
@@ -76,7 +76,7 @@ export class PagamentoController {
     return this.pagamentoRepository.find(filter);
   }
 
-  @patch('/pagamento')
+  @patch('/pagamentos')
   @response(200, {
     description: 'Pagamento PATCH success count',
     content: {'application/json': {schema: CountSchema}},
@@ -95,7 +95,7 @@ export class PagamentoController {
     return this.pagamentoRepository.updateAll(pagamento, where);
   }
 
-  @get('/pagamento/{id}')
+  @get('/pagamentos/{id}')
   @response(200, {
     description: 'Pagamento model instance',
     content: {
@@ -111,7 +111,7 @@ export class PagamentoController {
     return this.pagamentoRepository.findById(id, filter);
   }
 
-  @patch('/pagamento/{id}')
+  @patch('/pagamentos/{id}')
   @response(204, {
     description: 'Pagamento PATCH success',
   })
@@ -129,7 +129,7 @@ export class PagamentoController {
     await this.pagamentoRepository.updateById(id, pagamento);
   }
 
-  @put('/pagamento/{id}')
+  @put('/pagamentos/{id}')
   @response(204, {
     description: 'Pagamento PUT success',
   })
@@ -140,7 +140,7 @@ export class PagamentoController {
     await this.pagamentoRepository.replaceById(id, pagamento);
   }
 
-  @del('/pagamento/{id}')
+  @del('/pagamentos/{id}')
   @response(204, {
     description: 'Pagamento DELETE success',
   })

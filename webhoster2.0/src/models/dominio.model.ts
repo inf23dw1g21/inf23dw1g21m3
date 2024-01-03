@@ -40,8 +40,9 @@ export class Dominio extends Entity {
   })
   data_de_fim: string;
  
-  @belongsTo(() => Cliente)
-  cliente: number;
+  @belongsTo(() => Cliente, {name: 'cliente'})
+    cliente: number;
+
 
   constructor(data?: Partial<Dominio>) {
     super(data);

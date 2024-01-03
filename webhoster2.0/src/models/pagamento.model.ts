@@ -34,8 +34,9 @@ export class Pagamento extends Entity {
   })
   numero_de_transacao: string;
 
-  @belongsTo(() => Cliente, {name: 'pagamentos'})
-  cliente: number;
+  @belongsTo(() => Cliente, {name: 'cliente'})
+    cliente: number;
+
 
   constructor(data?: Partial<Pagamento>) {
     super(data);

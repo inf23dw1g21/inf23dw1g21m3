@@ -59,7 +59,7 @@ export class Plano extends Entity {
   fidelizacao: string;
 
   @hasMany(() => Cliente, {keyTo: 'plano'})
-  clientesPlano: Cliente[];
+  clientes: Cliente[];
 
   constructor(data?: Partial<Plano>) {
     super(data);

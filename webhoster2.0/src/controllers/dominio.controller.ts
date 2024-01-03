@@ -26,7 +26,7 @@ export class DominioController {
     public dominioRepository : DominioRepository,
   ) {}
 
-  @post('/dominio')
+  @post('/dominios')
   @response(200, {
     description: 'Dominio model instance',
     content: {'application/json': {schema: getModelSchemaRef(Dominio)}},
@@ -47,7 +47,7 @@ export class DominioController {
     return this.dominioRepository.create(dominio);
   }
 
-  @get('/dominio/count')
+  @get('/dominios/count')
   @response(200, {
     description: 'Dominio model count',
     content: {'application/json': {schema: CountSchema}},
@@ -58,7 +58,7 @@ export class DominioController {
     return this.dominioRepository.count(where);
   }
 
-  @get('/dominio')
+  @get('/dominios')
   @response(200, {
     description: 'Array of Dominio model instances',
     content: {
@@ -76,7 +76,7 @@ export class DominioController {
     return this.dominioRepository.find(filter);
   }
 
-  @patch('/dominio')
+  @patch('/dominios')
   @response(200, {
     description: 'Dominio PATCH success count',
     content: {'application/json': {schema: CountSchema}},
@@ -95,7 +95,7 @@ export class DominioController {
     return this.dominioRepository.updateAll(dominio, where);
   }
 
-  @get('/dominio/{id}')
+  @get('/dominios/{id}')
   @response(200, {
     description: 'Dominio model instance',
     content: {
@@ -111,7 +111,7 @@ export class DominioController {
     return this.dominioRepository.findById(id, filter);
   }
 
-  @patch('/dominio/{id}')
+  @patch('/dominios/{id}')
   @response(204, {
     description: 'Dominio PATCH success',
   })
@@ -129,7 +129,7 @@ export class DominioController {
     await this.dominioRepository.updateById(id, dominio);
   }
 
-  @put('/dominio/{id}')
+  @put('/dominios/{id}')
   @response(204, {
     description: 'Dominio PUT success',
   })
@@ -140,7 +140,7 @@ export class DominioController {
     await this.dominioRepository.replaceById(id, dominio);
   }
 
-  @del('/dominio/{id}')
+  @del('/dominios/{id}')
   @response(204, {
     description: 'Dominio DELETE success',
   })

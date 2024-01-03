@@ -1,10 +1,10 @@
 import {Getter, inject} from '@loopback/core';
 import {BelongsToAccessor, DefaultCrudRepository, HasManyRepositoryFactory, repository} from '@loopback/repository';
-import {WebhosterDataSource} from '../datasources';
 import {Cliente, ClienteRelations, Dominio, Pagamento, Plano} from '../models';
 import { DominioRepository } from './dominio.repository';
 import { PagamentoRepository } from './pagamento.repository';
 import { PlanoRepository } from './plano.repository';
+import { DbDataSource } from '../datasources/db.datasource';
 
 export class ClienteRepository extends DefaultCrudRepository<
   Cliente,
@@ -19,12 +19,12 @@ export class ClienteRepository extends DefaultCrudRepository<
     Pagamento,
     typeof Cliente.prototype.id
   >;
-  public readonly planos: BelongsToAccessor<
+  public readonly plano: BelongsToAccessor<
     Plano,
     typeof Cliente.prototype.id
   >;
   constructor(
-    @inject('datasources.webhoster') dataSource: WebhosterDataSource,
+    @inject('datasources.db') dataSource: DbDataSource,
     @repository.getter('DominioRepository')
     dominioRepositoryGetter: Getter<DominioRepository>,
     @repository.getter('PagamentoRepository')
@@ -36,12 +36,12 @@ export class ClienteRepository extends DefaultCrudRepository<
     this.ClienteDominios = this.createHasManyRepositoryFactoryFor(
       'dominios',
       dominioRepositoryGetter, );
-      this.clientePagamentos = this.createHasManyRepositoryFactoryFor(
-        'pagamentos',
-        pagamentoRepositoryGetter, );
-        this.planos = this.createBelongsToAccessorFor(
-          'planos',
-          planoRepositoryGetter,
-        );
+    this.clientePagamentos = this.createHasManyRepositoryFactoryFor(
+      'pagamentos',
+      pagamentoRepositoryGetter, );
+    this.plano = this.createBelongsToAccessorFor(
+      'plano',
+      planoRepositoryGetter,
+    );
   }
 }

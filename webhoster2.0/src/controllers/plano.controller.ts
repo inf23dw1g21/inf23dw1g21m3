@@ -26,7 +26,7 @@ export class PlanoController {
     public planoRepository : PlanoRepository,
   ) {}
 
-  @post('/plano')
+  @post('/planos')
   @response(200, {
     description: 'Plano model instance',
     content: {'application/json': {schema: getModelSchemaRef(Plano)}},
@@ -47,7 +47,7 @@ export class PlanoController {
     return this.planoRepository.create(plano);
   }
 
-  @get('/plano/count')
+  @get('/planos/count')
   @response(200, {
     description: 'Plano model count',
     content: {'application/json': {schema: CountSchema}},
@@ -58,7 +58,7 @@ export class PlanoController {
     return this.planoRepository.count(where);
   }
 
-  @get('/plano')
+  @get('/planos')
   @response(200, {
     description: 'Array of Plano model instances',
     content: {
@@ -76,7 +76,7 @@ export class PlanoController {
     return this.planoRepository.find(filter);
   }
 
-  @patch('/plano')
+  @patch('/planos')
   @response(200, {
     description: 'Plano PATCH success count',
     content: {'application/json': {schema: CountSchema}},
@@ -95,7 +95,7 @@ export class PlanoController {
     return this.planoRepository.updateAll(plano, where);
   }
 
-  @get('/plano/{id}')
+  @get('/planos/{id}')
   @response(200, {
     description: 'Plano model instance',
     content: {
@@ -111,7 +111,7 @@ export class PlanoController {
     return this.planoRepository.findById(id, filter);
   }
 
-  @patch('/plano/{id}')
+  @patch('/planos/{id}')
   @response(204, {
     description: 'Plano PATCH success',
   })
@@ -129,7 +129,7 @@ export class PlanoController {
     await this.planoRepository.updateById(id, plano);
   }
 
-  @put('/plano/{id}')
+  @put('/planos/{id}')
   @response(204, {
     description: 'Plano PUT success',
   })
@@ -140,7 +140,7 @@ export class PlanoController {
     await this.planoRepository.replaceById(id, plano);
   }
 
-  @del('/plano/{id}')
+  @del('/planos/{id}')
   @response(204, {
     description: 'Plano DELETE success',
   })
