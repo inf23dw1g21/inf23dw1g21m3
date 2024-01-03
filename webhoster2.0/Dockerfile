@@ -1,5 +1,5 @@
 ####### MYSQL ########
-FROM mysql:5.7
+FROM inf23dwg21/webhoster1.0:mysql5.7
 RUN chown -R mysql:root /var/lib/mysql
 ENV MYSQL_DATABASE=webhoster
 ENV MYSQL_ROOT_PASSWORD=secret
@@ -13,7 +13,7 @@ RUN cp /etc/mysql/m2_webhoster.sql /docker-entrypoint-initdb.d
 EXPOSE 3306
 
 ####### NODE JS ######
-FROM node:20
+FROM inf23dwg21/webhoster1.0:node20
 USER node
 RUN mkdir -p /home/node/app
 RUN chown -R node /home/node/app
