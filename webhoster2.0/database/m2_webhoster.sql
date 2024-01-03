@@ -3,10 +3,9 @@ DROP DATABASE IF EXISTS webhoster;
 CREATE DATABASE webhoster;
 use webhoster;
 
-DROP TABLE IF EXISTS plano;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE plano (
+DROP TABLE IF EXISTS Plano;
+
+CREATE TABLE Plano (
    id int NOT NULL AUTO_INCREMENT,
   tipo_de_plano varchar(512) NOT NULL,
   periodicidade varchar(512) NOT NULL,
@@ -17,9 +16,9 @@ CREATE TABLE plano (
   largura_de_banda varchar(512) NOT NULL,
   fidelizacao varchar(512) NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO plano VALUES
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci;
+
+INSERT INTO Plano VALUES
 (1, 'Básico', 'Mensal', 9.99, '10 GB', 1, 1, 'Ilimitada', 'Nenhuma'),
 (2, 'Básico', 'Anual', 99.99, '10 GB', 1, 1, 'Ilimitada', '1 mês grátis'),
 (3, 'Intermédio', 'Mensal', 19.99, '50 GB', 5, 3, 'Ilimitada', 'Nenhuma'),
@@ -32,10 +31,9 @@ INSERT INTO plano VALUES
 (10, 'Ultra','Anual', 499.99, '500 GB', 50, 20, 'Ilimitada', '5 meses grátis');
 
 
-DROP TABLE IF EXISTS cliente;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE cliente (
+DROP TABLE IF EXISTS Cliente;
+
+CREATE TABLE Cliente (
   id int NOT NULL AUTO_INCREMENT,
   nome varchar(512) NOT NULL,
   tipo_de_conta varchar(512) NOT NULL,
@@ -46,10 +44,9 @@ CREATE TABLE cliente (
   data_ultimo_pagamento datetime NOT NULL,
   plano int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
--- Inserir dados na tabela clientes
-INSERT INTO cliente VALUES
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci;
+
+INSERT INTO Cliente VALUES
 (1, 'João Silva', 'Empresarial', '123456789', 'joao@empresa.com', '912345678', 'Mensal', '2023-11-30', 1),
 (2, 'Maria Santos', 'Pessoal', '234567890', 'maria@santos.com', '923456789',  'Anual', '2023-12-31', 1),
 (3, 'Pedro Costa', 'Empresarial', '345678901', 'pedro@costa.com', '934567890',  'Mensal', '2023-11-30', 1),
@@ -81,10 +78,9 @@ INSERT INTO cliente VALUES
 (29, 'Marco Dias', 'Empresarial', '909090909', 'marco@dias.com', '990909090',  'Mensal', '2023-11-30',10),
 (30, 'Laura Monteiro', 'Pessoal', '010101010', 'laura@monteiro.com', '901010101', 'Anual', '2023-12-31',5);
 
-DROP TABLE IF EXISTS dominio;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE dominio (
+DROP TABLE IF EXISTS Dominio;
+
+CREATE TABLE Dominio (
   id int NOT NULL AUTO_INCREMENT,
   nome varchar(512) NOT NULL,
   codigo_TLD varchar(512) NOT NULL,
@@ -93,10 +89,9 @@ CREATE TABLE dominio (
   data_de_fim datetime NOT NULL,
   cliente int DEFAULT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
--- Inserir dados na tabela dominios
-INSERT INTO dominio VALUES
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci;
+
+INSERT INTO Dominio VALUES
 (1, 'empresa', '.com', true, '2023-01-01', '2024-01-01', 1),
 (2, 'santos', '.com', true, '2023-01-01', '2024-01-01', 2),
 (3, 'costa', '.com', true, '2023-01-01', '2024-01-01', 3),
@@ -128,10 +123,9 @@ INSERT INTO dominio VALUES
 (29, 'dias', '.net', true, '2023-01-01', '2024-01-01', 29),
 (30, 'monteiro', '.net', true, '2023-01-01', '2024-01-01', 30);
 
-DROP TABLE IF EXISTS pagamento;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE pagamento (
+DROP TABLE IF EXISTS Pagamento;
+
+CREATE TABLE Pagamento (
   id int NOT NULL AUTO_INCREMENT,
   timestamp datetime NOT NULL,
   valor int NOT NULL,
@@ -139,10 +133,9 @@ CREATE TABLE pagamento (
   numero_de_transacao varchar(512) NOT NULL,
   cliente int DEFAULT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 ;
-/*!40101 SET character_set_client = @saved_cs_client */;
--- Inserir dados na tabela pagamentos
-INSERT INTO pagamento VALUES
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci ;
+
+INSERT INTO Pagamento VALUES
 (1, '2023-11-30 23:59:59', 9.99, 'Cartão de crédito', '1111111111', 1),
 (2, '2023-01-01 00:00:00', 99.99, 'PayPal', '2222222222', 2),
 (3, '2023-11-30 23:59:59', 19.99, 'Cartão de crédito', '3333333333', 3),
