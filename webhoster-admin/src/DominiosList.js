@@ -1,5 +1,5 @@
 import {List, Datagrid, TextField, NumberField, DateField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, DateInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput }
+    NumberInput, DateInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput, CreateButton }
     from "react-admin";
 
 const PostFilter = (props) => <Filter {...props}>
@@ -12,6 +12,7 @@ reference="dominios" allowEmpty>
 
 export const DominioList = (props) => (
     <List filters={<PostFilter />} {...props}>
+        <CreateButton/>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="nome" />

@@ -1,4 +1,4 @@
-import { Admin, Resource, ListGuesser, EditGuesser } from "react-admin";
+import { Admin, Resource, EditGuesser} from "react-admin";
 import lb4Provider from "react-admin-lb4";
 import { ClienteEdit, ClienteList } from "./ClienteList";
 import { PagamentoEdit, PagamentoList } from "./PagamentoList";
@@ -14,7 +14,7 @@ const App = () => (
  <Admin dataProvider={dataProvider} dashboard={Dashboard}>
  <Resource name="clientes" list={ClienteList} edit={ClienteEdit} icon={AttributionIcon}/>
  <Resource name="pagamentos" list={PagamentoList} edit={PagamentoEdit} icon={EuroIcon}/>
- <Resource name="planos" list={PlanoList} edit={PlanoEdit} icon={ImportContactsIcon}/>
+ <Resource name="planos" list={PlanoList} edit={PlanoEdit} create={EditGuesser} icon={ImportContactsIcon}/>
  <Resource name="dominios" list={DominioList} edit={DominioEdit} icon={CloudCircleIcon} />
  </Admin>
 );

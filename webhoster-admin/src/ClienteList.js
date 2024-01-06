@@ -1,6 +1,6 @@
 import {List, Datagrid, TextField, NumberField, DateField,
     EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, DateInput, ReferenceInput, SelectInput, EmailField, useRecordContext, Filter }
+    NumberInput, DateInput, ReferenceInput, SelectInput, EmailField, useRecordContext, Filter, CreateButton }
     from "react-admin";
 
 const PostTitle = () => {
@@ -17,6 +17,7 @@ reference="clientes" allowEmpty>
 </Filter>
 export const ClienteList = (props) => (
     <List filters={<PostFilter />} {...props}>
+        <CreateButton/>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="nome" />

@@ -1,5 +1,5 @@
 import {List, Datagrid, TextField, NumberField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput }
+    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton }
     from "react-admin";
 
 const PostTitle = () => {
@@ -17,6 +17,7 @@ reference="planos" allowEmpty>
 
 export const PlanoList = (props) => (
     <List filters={<PostFilter />} {...props}>
+        <CreateButton/>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="tipo_de_plano" />
