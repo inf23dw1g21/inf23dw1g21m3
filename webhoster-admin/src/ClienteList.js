@@ -1,18 +1,21 @@
 import {
     List, Datagrid, TextField, NumberField, DateField,
     EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, DateInput, ReferenceInput, SelectInput, EmailField, useRecordContext, Filter, CreateButton, useNotify,
-    useRefresh,
+    NumberInput, ReferenceInput, SelectInput, EmailField, useRecordContext, Filter, CreateButton, useNotify,
     useRedirect,
+    Create,
+    DateTimeInput,
+    SaveButton, 
+    Toolbar
 }
     from "react-admin";
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect} from 'react';
+ 
 const PostTitle = () => {
     const record = useRecordContext();
     return record ? (<span>Cliente {`"${record.subject}"`}</span>) : null;
 }
-
+ 
 const PostFilter = (props) => <Filter {...props}>
     <TextInput label="Procurar" source="email" alwaysOn />
     <ReferenceInput label="Cliente" source="email"
@@ -37,59 +40,55 @@ export const ClienteList = (props) => (
         </Datagrid>
     </List>
 );
-
+ 
 export const ClienteEdit = () => (
     <Edit title={<PostTitle />}>
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled label="Id" source="id" />
             <TextInput source="nome" />
             <TextInput source="tipo_de_conta" />
             <TextInput source="numero_fiscal" />
             <TextInput source="email" />
             <TextInput source="contacto" />
             <TextInput source="periodicidade_de_pagamento" />
-            <DateInput source="data_ultimo_pagamento" />
+            <TextInput source="data_ultimo_pagamento" defaultValue={"2018-03-20T09:12:28Z"}/>
             <NumberInput source="plano" />
         </SimpleForm>
     </Edit>
 );
-export const ClienteCreate = (props) => {
+    const PostCreateToolbar = () => {    
+    const redirect = useRedirect();    
     const notify = useNotify();
-    const refresh = useRefresh();
-    const redirect = useRedirect();
-    const onSuccess = ({ data }) => {
-        notify(`Novo cliente criado `);
-        redirect(`/clientes/${data.id}`);
-        refresh();
+    return (
+        <Toolbar>
+        <SaveButton label="Guardar e Mostrar"/>
+        <SaveButton label="Guardar" 
+        mutationOptions={{                    
+            onSuccess: data => {                        
+                notify('ra.notification.created', {                            
+                    type: 'info',                            
+                    messageArgs: { smart_count: 1 },                        
+                });                        
+                redirect(false);                    
+            }}                
+        }                
+        type="button"
+                variant="text"/>
+        </Toolbar>
+        );
     };
-    const [clientes, setClientes] = useState([]);
-    const { data: cliente } = useQuery({
-        type: 'getList',
-        resource: 'clientes',
-        payload: {
-            pagination: { page: 1, perPage: 600 },
-            sort: { field: 'email', order: 'ASC' },
-            filter: {},
-        }
-    });
-useEffect(() => {
 
-    if (cliente)
-        setClientes(cliente.map((d) => ({ id: d.id, name: d.nome })));
-},
-    [cliente]);
-return (
-    <Create {...props} title='Create new Rental' onSuccess={onSuccess}>
-        <SimpleForm>
-            <TextInput source="id" />
-            <TextInput source="nome" />
-            <TextInput source="tipo_de_conta" />
-            <TextInput source="numero_fiscal" />
-            <TextInput source="email" />
-            <TextInput source="contacto" />
-            <TextInput source="periodicidade_de_pagamento" />
-            <DateInput source="data_ultimo_pagamento" />
-            <NumberInput source="plano" />
+export const ClienteCreate = () => (
+          
+      <Create>
+        <SimpleForm toolbar={<PostCreateToolbar />}>
+          <TextInput source="nome" />
+          <TextInput source="tipo_de_conta"/>
+          <TextInput source="numero_fiscal" />
+          <TextInput source="email" />
+          <TextInput source="contacto" />
+          <TextInput source="periodicidade_de_pagamento" />
+          <TextInput source="data_ultimo_pagamento" defaultValue={"2018-03-20T09:12:28Z"}/>
         </SimpleForm>
-    </Create>
-)};
+      </Create>
+);
