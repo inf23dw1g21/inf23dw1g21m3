@@ -53,43 +53,43 @@ export const ClienteEdit = () => (
         </SimpleForm>
     </Edit>
 );
-export const ClienteCreate = (props) => (
-const notify = useNotify();
-const refresh = useRefresh();
-const redirect = useRedirect();
-const onSuccess = ({ data }) => {
-    notify(`Novo cliente criado `);
-    redirect(`/clientes/${data.id}`);
-    refresh();
-};
+export const ClienteCreate = (props) => {
+    const notify = useNotify();
+    const refresh = useRefresh();
+    const redirect = useRedirect();
+    const onSuccess = ({ data }) => {
+        notify(`Novo cliente criado `);
+        redirect(`/clientes/${data.id}`);
+        refresh();
+    };
     const [clientes, setClientes] = useState([]);
-  const { data: cliente } = useQuery({
-    type: 'getList',
-    resource: 'clientes',
-    payload: {
-      pagination: { page: 1, perPage: 600 },
-      sort: { field: 'email', order: 'ASC' },
-      filter: {},
-    }
-  });
-  useEffect(() => {
-    
+    const { data: cliente } = useQuery({
+        type: 'getList',
+        resource: 'clientes',
+        payload: {
+            pagination: { page: 1, perPage: 600 },
+            sort: { field: 'email', order: 'ASC' },
+            filter: {},
+        }
+    });
+useEffect(() => {
+
     if (cliente)
-      setClientes(cliente.map((d) => ({ id: d.id, name: d.nome })));
-  }, 
-  [cliente]);
+        setClientes(cliente.map((d) => ({ id: d.id, name: d.nome })));
+},
+    [cliente]);
 return (
-<Create {...props} title='Create new Rental' onSuccess={onSuccess}>
-    <SimpleForm>
-        <TextInput source="id" />
-        <TextInput source="nome" />
-        <TextInput source="tipo_de_conta" />
-        <TextInput source="numero_fiscal" />
-        <TextInput source="email" />
-        <TextInput source="contacto" />
-        <TextInput source="periodicidade_de_pagamento" />
-        <DateInput source="data_ultimo_pagamento" />
-        <NumberInput source="plano" />
-    </SimpleForm>
-</Create>
-));
+    <Create {...props} title='Create new Rental' onSuccess={onSuccess}>
+        <SimpleForm>
+            <TextInput source="id" />
+            <TextInput source="nome" />
+            <TextInput source="tipo_de_conta" />
+            <TextInput source="numero_fiscal" />
+            <TextInput source="email" />
+            <TextInput source="contacto" />
+            <TextInput source="periodicidade_de_pagamento" />
+            <DateInput source="data_ultimo_pagamento" />
+            <NumberInput source="plano" />
+        </SimpleForm>
+    </Create>
+)};
