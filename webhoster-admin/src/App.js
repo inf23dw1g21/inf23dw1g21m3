@@ -1,16 +1,16 @@
-import { Admin, Resource, ListGuesser } from "react-admin";
+import { Admin, Resource, ListGuesser, EditGuesser } from "react-admin";
 import lb4Provider from "react-admin-lb4";
-import { ClienteList } from "./ClienteList";
-import { PagamentoList } from "./PagamentoList";
-import { PlanoList } from "./PlanoList";
-import { DominioList } from "./DominiosList";
+import { ClienteEdit, ClienteList } from "./ClienteList";
+import { PagamentoEdit, PagamentoList } from "./PagamentoList";
+import { PlanoEdit, PlanoList } from "./PlanoList";
+import { DominioEdit, DominioList } from "./DominiosList";
 const dataProvider = lb4Provider("http://localhost:3000");
 const App = () => (
  <Admin dataProvider={dataProvider}>
- <Resource name="clientes" list={ClienteList} />
- <Resource name="pagamentos" list={PagamentoList} />
- <Resource name="planos" list={PlanoList} />
- <Resource name="dominios" list={DominioList} />
+ <Resource name="clientes" list={ClienteList} edit={ClienteEdit}/>
+ <Resource name="pagamentos" list={PagamentoList} edit={PagamentoEdit}/>
+ <Resource name="planos" list={PlanoList} edit={PlanoEdit}/>
+ <Resource name="dominios" list={DominioList} edit={DominioEdit}/>
  </Admin>
 );
 export default App;

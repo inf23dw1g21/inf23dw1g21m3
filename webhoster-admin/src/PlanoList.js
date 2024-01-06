@@ -1,4 +1,5 @@
 import { Datagrid, List, NumberField, TextField, EditButton } from 'react-admin';
+import { DateInput, Edit, NumberInput, SimpleForm, TextInput } from 'react-admin';
 
 export const PlanoList = () => (
     <List>
@@ -15,4 +16,19 @@ export const PlanoList = () => (
             <EditButton/>
         </Datagrid>
     </List>
+);
+export const PlanoEdit = () => (
+    <Edit>
+        <SimpleForm>
+            <TextInput source="id" />
+            <TextInput source="tipo_de_plano" />
+            <TextInput source="periodicidade" />
+            <NumberInput source="preco" />
+            <TextInput source="armazenamento" />
+            <NumberInput source="numero_de_contas_email" />
+            <NumberInput source="numero_de_dominios" />
+            <TextInput source="largura_de_banda" />
+            <TextInput source="fidelizacao" />
+        </SimpleForm>
+    </Edit>
 );
