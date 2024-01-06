@@ -1,4 +1,4 @@
-import { Datagrid, List, NumberField, TextField } from 'react-admin';
+import { Datagrid, List, NumberField, TextField, EditButton } from 'react-admin';
 
 export const PlanoList = () => (
     <List>
@@ -12,6 +12,7 @@ export const PlanoList = () => (
             <NumberField source="numero_de_dominios" />
             <TextField source="largura_de_banda" />
             <TextField source="fidelizacao" />
+            <EditButton/>
         </Datagrid>
     </List>
 );

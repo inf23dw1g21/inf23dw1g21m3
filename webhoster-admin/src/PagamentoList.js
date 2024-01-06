@@ -1,4 +1,4 @@
-import { Datagrid, DateField, List, NumberField, TextField } from 'react-admin';
+import { Datagrid, DateField, List, NumberField, TextField, EditButton } from 'react-admin';
 
 export const PagamentoList = () => (
     <List>
@@ -9,6 +9,7 @@ export const PagamentoList = () => (
             <TextField source="metodo_de_pagamento" />
             <TextField source="numero_de_transacao" />
             <NumberField source="cliente" />
+            <EditButton/>
         </Datagrid>
     </List>
 );

@@ -1,4 +1,4 @@
-import { BooleanField, Datagrid, DateField, List, NumberField, TextField } from 'react-admin';
+import { BooleanField, Datagrid, DateField, List, NumberField, TextField, EditButton } from 'react-admin';
 
 export const DominioList = () => (
     <List>
@@ -10,6 +10,7 @@ export const DominioList = () => (
             <DateField source="data_de_inicio" />
             <DateField source="data_de_fim" />
             <NumberField source="cliente" />
+            <EditButton />
         </Datagrid>
     </List>
 );
