@@ -1,6 +1,20 @@
-import { Datagrid, DateField, EmailField, List, NumberField, TextField, EditButton } from 'react-admin';
-import { DateInput, Edit, NumberInput, SimpleForm, TextInput } from 'react-admin';
+import {List, Datagrid, TextField, NumberField, DateField,
+    EditButton, Edit, SimpleForm, TextInput,
+    NumberInput, DateInput, ReferenceInput, SelectInput, EmailField, useRecordContext, Filter }
+    from "react-admin";
 
+const PostTitle = () => {
+    const record = useRecordContext();
+    return record ? (<span>Cliente {`"${record.subject}"`}</span>):null;
+    }
+
+const PostFilter = (props) => <Filter {...props}>
+<TextInput label="Procura" source="subject" alwaysOn />
+<ReferenceInput label="Cliente" source="id"
+reference="clientes" allowEmpty>
+<SelectInput optionText="description" />
+</ReferenceInput>
+</Filter>
 export const ClienteList = () => (
     <List>
         <Datagrid rowClick="edit">
@@ -19,7 +33,7 @@ export const ClienteList = () => (
 );
 
 export const ClienteEdit = () => (
-    <Edit>
+    <Edit title={<PostTitle />}>
         <SimpleForm>
             <TextInput source="id" />
             <TextInput source="nome" />

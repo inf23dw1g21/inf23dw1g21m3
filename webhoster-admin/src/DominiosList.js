@@ -1,5 +1,14 @@
-import { BooleanField, Datagrid, DateField, List, NumberField, TextField, EditButton } from 'react-admin';
-import { DateInput, Edit, NumberInput, SimpleForm, TextInput, BooleanInput } from 'react-admin';
+import {List, Datagrid, TextField, NumberField, DateField, EditButton, Edit, SimpleForm, TextInput,
+    NumberInput, DateInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput }
+    from "react-admin";
+
+const PostFilter = (props) => <Filter {...props}>
+<TextInput label="Procurar" source="subject" alwaysOn />
+<ReferenceInput label="Dominio" source="id"
+reference="dominios" allowEmpty>
+<SelectInput optionText="description" />
+</ReferenceInput>
+</Filter>
 
 export const DominioList = () => (
     <List>
@@ -15,8 +24,12 @@ export const DominioList = () => (
         </Datagrid>
     </List>
 );
+const PostTitle = () => {
+    const record = useRecordContext();
+    return record ? (<span>Dominio {`"${record.subject}"`}</span>):null;
+    }
 export const DominioEdit = () => (
-    <Edit>
+    <Edit title={<PostTitle />}>
         <SimpleForm>
             <TextInput source="id" />
             <TextInput source="nome" />

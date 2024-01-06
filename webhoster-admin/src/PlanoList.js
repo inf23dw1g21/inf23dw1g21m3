@@ -1,5 +1,19 @@
-import { Datagrid, List, NumberField, TextField, EditButton } from 'react-admin';
-import { DateInput, Edit, NumberInput, SimpleForm, TextInput } from 'react-admin';
+import {List, Datagrid, TextField, NumberField, EditButton, Edit, SimpleForm, TextInput,
+    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput }
+    from "react-admin";
+
+const PostTitle = () => {
+    const record = useRecordContext();
+    return record ? (<span>Plano {`"${record.subject}"`}</span>):null;
+    }
+
+    const PostFilter = (props) => <Filter {...props}>
+<TextInput label="Procurar" source="subject" alwaysOn />
+<ReferenceInput label="Plano" source="id"
+reference="planos" allowEmpty>
+<SelectInput optionText="description" />
+</ReferenceInput>
+</Filter>
 
 export const PlanoList = () => (
     <List>
@@ -18,7 +32,7 @@ export const PlanoList = () => (
     </List>
 );
 export const PlanoEdit = () => (
-    <Edit>
+    <Edit title={<PostTitle />}>
         <SimpleForm>
             <TextInput source="id" />
             <TextInput source="tipo_de_plano" />
