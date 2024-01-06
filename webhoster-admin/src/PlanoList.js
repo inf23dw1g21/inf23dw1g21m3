@@ -8,15 +8,15 @@ const PostTitle = () => {
     }
 
     const PostFilter = (props) => <Filter {...props}>
-<TextInput label="Procurar" source="subject" alwaysOn />
-<ReferenceInput label="Plano" source="id"
+<TextInput label="Procurar" source="periodicidade" alwaysOn />
+<ReferenceInput label="Plano" source="periodicidade"
 reference="planos" allowEmpty>
-<SelectInput optionText="description" />
+<SelectInput optionText="periodicidade" />
 </ReferenceInput>
 </Filter>
 
-export const PlanoList = () => (
-    <List>
+export const PlanoList = (props) => (
+    <List filters={<PostFilter />} {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="tipo_de_plano" />

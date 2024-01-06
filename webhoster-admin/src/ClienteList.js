@@ -9,14 +9,14 @@ const PostTitle = () => {
     }
 
 const PostFilter = (props) => <Filter {...props}>
-<TextInput label="Procura" source="subject" alwaysOn />
-<ReferenceInput label="Cliente" source="id"
+<TextInput label="Procurar" source="email" alwaysOn />
+<ReferenceInput label="Cliente" source="email"
 reference="clientes" allowEmpty>
-<SelectInput optionText="description" />
+<SelectInput optionText="email" />
 </ReferenceInput>
 </Filter>
-export const ClienteList = () => (
-    <List>
+export const ClienteList = (props) => (
+    <List filters={<PostFilter />} {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="nome" />

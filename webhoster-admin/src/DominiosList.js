@@ -3,15 +3,15 @@ import {List, Datagrid, TextField, NumberField, DateField, EditButton, Edit, Sim
     from "react-admin";
 
 const PostFilter = (props) => <Filter {...props}>
-<TextInput label="Procurar" source="subject" alwaysOn />
-<ReferenceInput label="Dominio" source="id"
+<TextInput label="Procurar" source="cliente" alwaysOn />
+<ReferenceInput label="Dominio" source="cliente"
 reference="dominios" allowEmpty>
-<SelectInput optionText="description" />
+<SelectInput optionText="cliente" />
 </ReferenceInput>
 </Filter>
 
-export const DominioList = () => (
-    <List>
+export const DominioList = (props) => (
+    <List filters={<PostFilter />} {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="nome" />
