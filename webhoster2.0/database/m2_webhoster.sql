@@ -45,6 +45,9 @@ CREATE TABLE Cliente (
   plano int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci;
+ALTER TABLE Cliente
+ADD CONSTRAINT fk_cliente_plano
+FOREIGN KEY (plano) REFERENCES Plano(id);
 
 INSERT INTO Cliente VALUES
 (1, 'João Silva', 'Empresarial', '123456789', 'joao@empresa.com', '912345678', 'Mensal', '2023-11-30', 1),
@@ -90,7 +93,9 @@ CREATE TABLE Dominio (
   cliente int DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci;
-
+ALTER TABLE Dominio
+ADD CONSTRAINT fk_dominio_cliente
+FOREIGN KEY (cliente) REFERENCES Cliente(id);
 INSERT INTO Dominio VALUES
 (1, 'empresa', '.com', true, '2023-01-01', '2024-01-01', 1),
 (2, 'santos', '.com', true, '2023-01-01', '2024-01-01', 2),
@@ -134,7 +139,9 @@ CREATE TABLE Pagamento (
   cliente int DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci ;
-
+ALTER TABLE Pagamento
+ADD CONSTRAINT fk_pagamento_cliente
+FOREIGN KEY (cliente) REFERENCES Cliente(id);
 INSERT INTO Pagamento VALUES
 (1, '2023-11-30 23:59:59', 9.99, 'Cartão de crédito', '1111111111', 1),
 (2, '2023-01-01 00:00:00', 99.99, 'PayPal', '2222222222', 2),

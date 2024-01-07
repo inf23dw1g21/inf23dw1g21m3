@@ -32,15 +32,15 @@ const PostTitle = () => {
     const record = useRecordContext();
     return record ? (<span>Dominio {`"${record.subject}"`}</span>) : null;
 }
-export const DominioEdit = () => (
-    <Edit title={<PostTitle />}>
+export const DominioEdit = (props) => (
+    <Edit title={<PostTitle />} {...props}>
         <SimpleForm>
             <TextInput disabled label="Id" source="id" />
             <TextInput source="nome" />
             <TextInput source="codigo_TLD" />
             <BooleanInput source="estado" />
-            <DateInput source="data_de_inicio" />
-            <DateInput source="data_de_fim" />
+            <TextInput source="data_de_inicio" defaultValue={"2018-03-20T09:12:28Z"}/>
+            <TextInput source="data_de_fim" defaultValue={"2018-03-20T09:12:28Z"} />
             <NumberInput source="cliente" />
         </SimpleForm>
     </Edit>
@@ -69,15 +69,14 @@ const PostCreateToolbar = () => {
     );
 };
 
-export const DominioCreate = () => (
-    <Create title={<PostTitle />}>
+export const DominioCreate = (props) => (
+    <Create title={<PostTitle />} {...props}>
         <SimpleForm toolbar={<PostCreateToolbar />}>
             <TextInput source="nome" />
             <TextInput source="codigo_TLD" />
             <BooleanInput source="estado" />
-            <DateInput source="data_de_inicio" />
-            <DateInput source="data_de_fim" />
-            <NumberInput source="cliente" />
+            <TextInput source="data_de_inicio" defaultValue={"2023-03-20T09:12:28Z"} />
+            <TextInput source="data_de_fim" defaultValue={"2024-03-20T09:12:28Z"}/>
         </SimpleForm>
     </Create>
 );

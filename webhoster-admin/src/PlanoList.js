@@ -35,8 +35,8 @@ export const PlanoList = (props) => (
         </Datagrid>
     </List>
 );
-export const PlanoEdit = () => (
-    <Edit title={<PostTitle />}>
+export const PlanoEdit = (props) => (
+    <Edit title={<PostTitle />} {...props}>
         <SimpleForm>
             <TextInput disabled label="Id" source="id" />
             <TextInput source="tipo_de_plano" />
@@ -74,8 +74,8 @@ const PostCreateToolbar = () => {
     );
 };
 
-export const PlanoCreate = () => (
-    <Create title={<PostTitle />}>
+export const PlanoCreate = (props) => (
+    <Create title={<PostTitle />} {...props}>
         <SimpleForm toolbar={<PostCreateToolbar />}>
             <TextInput source="tipo_de_plano" />
             <TextInput source="periodicidade" />

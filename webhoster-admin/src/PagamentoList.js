@@ -30,8 +30,8 @@ export const PagamentoList = (props) => (
         </Datagrid>
     </List>
 );
-export const PagamentoEdit = () => (
-    <Edit title={<PostTitle />}>
+export const PagamentoEdit = (props) => (
+    <Edit title={<PostTitle />} {...props}>
         <SimpleForm>
             <TextInput disabled label="Id" source="id"  />
             <TextInput source="timestamp" defaultValue={"2018-03-20T09:12:28Z"}/>
@@ -65,8 +65,8 @@ const PostCreateToolbar = () => {
         );
     };
 
-    export const PagamentoCreate = () => (
-        <Create title={<PostTitle />}>
+    export const PagamentoCreate = (props) => (
+        <Create title={<PostTitle />} {...props}>
             <SimpleForm toolbar={<PostCreateToolbar />}>
                 <TextInput source="timestamp" defaultValue={"2018-03-20T09:12:28Z"}/>
                 <NumberInput source="valor" />
