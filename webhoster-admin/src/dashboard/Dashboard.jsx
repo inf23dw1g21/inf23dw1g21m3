@@ -3,7 +3,7 @@ import { Card, CardHeader, CardContent, Grid } from '@mui/material';
 
 // Importar as Listas (ClienteList, DominioList, PagamentoList, PlanoList) aqui
 
-export const Dashboard = () => {
+const Dashboard = () => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -18,3 +18,4 @@ export const Dashboard = () => {
         </Grid>
     );
 };
+export default Dashboard;

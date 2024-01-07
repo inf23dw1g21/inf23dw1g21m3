@@ -81,7 +81,7 @@ const PostCreateToolbar = () => {
     );
 };
 
-export const ClienteCreate = (props) =>  (
+export const ClienteCreate = (props) => (
 
     <Create  {...props}>
         <SimpleForm toolbar={<PostCreateToolbar />}>
