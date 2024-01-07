@@ -42,7 +42,7 @@ CREATE TABLE Cliente (
   contacto varchar(512) NOT NULL,
   periodicidade_de_pagamento varchar(512) NOT NULL,
   data_ultimo_pagamento datetime NOT NULL,
-  plano int DEFAULT NULL,
+  plano int DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE = utf8_general_ci;
 ALTER TABLE Cliente

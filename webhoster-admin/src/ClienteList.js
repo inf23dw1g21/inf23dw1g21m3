@@ -24,7 +24,6 @@ const PostFilter = (props) => <Filter {...props}>
 </Filter>
 export const ClienteList = (props) => (
     <List filters={<PostFilter />} {...props}>
-        <CreateButton />
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="nome" />
@@ -35,7 +34,7 @@ export const ClienteList = (props) => (
             <TextField source="periodicidade_de_pagamento" />
             <DateField source="data_ultimo_pagamento" />
             <ReferenceField source="plano" reference="planos">
-                <TextField source="id" />
+                <TextField source="tipo_de_plano" />
             </ReferenceField>
             <EditButton />
         </Datagrid>
@@ -54,7 +53,7 @@ export const ClienteEdit = (props) => (
             <TextInput source="periodicidade_de_pagamento" />
             <TextInput source="data_ultimo_pagamento" defaultValue={"2018-03-20T09:12:28Z"} />
             <ReferenceInput source="plano" reference="planos">
-                <SelectInput optionText="id" />
+                <SelectInput optionText="tipo_de_plano" optionValue="id"/>
             </ReferenceInput>
         </SimpleForm>
     </Edit>
@@ -82,9 +81,9 @@ const PostCreateToolbar = () => {
     );
 };
 
-export const ClienteCreate = (props) => (
+export const ClienteCreate = (props) =>  (
 
-    <Create {...props}>
+    <Create  {...props}>
         <SimpleForm toolbar={<PostCreateToolbar />}>
             <TextInput source="nome" />
             <TextInput source="tipo_de_conta" />
@@ -94,7 +93,7 @@ export const ClienteCreate = (props) => (
             <TextInput source="periodicidade_de_pagamento" />
             <TextInput source="data_ultimo_pagamento" defaultValue={"2018-03-20T09:12:28Z"} />
             <ReferenceInput source="plano" reference="planos">
-                <SelectInput optionText="id" />
+                    <SelectInput/>
             </ReferenceInput>
         </SimpleForm>
     </Create>
