@@ -1,6 +1,6 @@
 import {List, Datagrid, TextField, NumberField, DateField,
     EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, DateInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton, 
+    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton, 
     Toolbar, Create, useNotify, useRedirect }
     from "react-admin";
 
@@ -18,7 +18,6 @@ reference="pagamentos" allowEmpty>
 </Filter>
 export const PagamentoList = (props) => (
     <List filters={<PostFilter />} {...props} >
-        <CreateButton/> 
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <DateField source="timestamp" />

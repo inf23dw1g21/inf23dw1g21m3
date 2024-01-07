@@ -1,14 +1,12 @@
 import {
-    List, Datagrid, TextField, NumberField, DateField,
+    List, Datagrid, TextField, DateField,
     EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, ReferenceInput, SelectInput, ReferenceField,EmailField, useRecordContext, Filter, CreateButton, useNotify,
+     ReferenceInput, SelectInput, ReferenceField,EmailField, useRecordContext, Filter, useNotify,
     useRedirect,
     Create,
     SaveButton,
     Toolbar
-}
-    from "react-admin";
-import React, { useState, useEffect } from 'react';
+}from "react-admin";
 
 const PostTitle = () => {
     const record = useRecordContext();
