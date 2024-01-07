@@ -1,6 +1,6 @@
 import {
     List, Datagrid, TextField, NumberField, DateField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton,
+    useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton,
     Toolbar, Create, useNotify, useRedirect,ReferenceField
 }
     from "react-admin";
@@ -43,7 +43,7 @@ export const DominioEdit = (props) => (
             <TextInput source="data_de_inicio" defaultValue={"2018-03-20T09:12:28Z"}/>
             <TextInput source="data_de_fim" defaultValue={"2018-03-20T09:12:28Z"} />
             <ReferenceInput source="cliente" reference="clientes">
-                <SelectInput optionText="email" optionValue="id"/>
+                <SelectInput/>
             </ReferenceInput>
         </SimpleForm>
     </Edit>
@@ -81,7 +81,7 @@ export const DominioCreate = (props) => (
             <TextInput source="data_de_inicio" defaultValue={"2023-03-20T09:12:28Z"} />
             <TextInput source="data_de_fim" defaultValue={"2024-03-20T09:12:28Z"}/>
             <ReferenceInput source="cliente" reference="clientes">
-                <SelectInput optionText="email" optionValue="id"/>
+                <SelectInput/>
             </ReferenceInput>
         </SimpleForm>
     </Create>

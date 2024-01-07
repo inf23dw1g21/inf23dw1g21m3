@@ -40,7 +40,7 @@ services:
       SERVER_PORT: 3000
     depends_on:
       - mysql
-    command: ["./database/wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
+    command: ["./database/wait-for-it.sh", "mysql:3306", "--", "npm" ,"start"]
     networks:
     - internalnet
 

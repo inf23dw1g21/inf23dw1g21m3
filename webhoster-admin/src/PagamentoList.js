@@ -65,7 +65,7 @@ export const PagamentoEdit = (props) => (
       <TextInput source="metodo_de_pagamento" />
       <TextInput source="numero_de_transacao" />
       <ReferenceInput source="cliente" reference="clientes">
-        <SelectInput optionText="email" optionValue="id" />
+        <SelectInput />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -103,7 +103,7 @@ export const PagamentoCreate = (props) => (
       <TextInput source="metodo_de_pagamento" />
       <TextInput source="numero_de_transacao" />
       <ReferenceInput source="cliente" reference="clientes">
-        <SelectInput optionText="email" optionValue="id" />
+        <SelectInput />
       </ReferenceInput>
     </SimpleForm>
   </Create>

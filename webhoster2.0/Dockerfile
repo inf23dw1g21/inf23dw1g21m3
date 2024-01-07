@@ -6,7 +6,6 @@ ENV MYSQL_ROOT_PASSWORD=secret
 ENV MYSQL_PASSWORD=secret
 
 ADD ./database/m2_webhoster.sql /etc/mysql/m2_webhoster.sql
-
 RUN sed -i 's/MYSQL_DATABASE/'${MYSQL_DATABASE}'/g' /etc/mysql/m2_webhoster.sql
 RUN cp /etc/mysql/m2_webhoster.sql /docker-entrypoint-initdb.d
 
