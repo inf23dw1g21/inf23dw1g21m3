@@ -24,7 +24,9 @@ const PostFilter = (props) => <Filter {...props}>
 </Filter>
 export const ClienteList = (props) => (
     <List filters={<PostFilter />} {...props}>
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick={(id, basePath, record)=>{
+            return `/dominios?displayedFilters=%7B%7D&filter=%7B%221%22%3A%221%22%2C%22cliente%22%3A%22${record.id}%22%7D&order=ASC&page=1&perPage=10&sort=id`;
+        }}>
             <NumberField source="id" />
             <TextField source="nome" />
             <TextField source="tipo_de_conta" />

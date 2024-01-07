@@ -28,20 +28,22 @@ const PostTitle = () => {
 
 const PostFilter = (props) => (
   <Filter {...props}>
-    <TextInput label="Procurar" source="numero_de_transacao" alwaysOn />
+    <TextInput label="Procurar" source="cliente" alwaysOn />
     <ReferenceInput
       label="Pagamento"
-      source="numero_de_transacao"
+      source="cliente"
       reference="pagamentos"
       allowEmpty
     >
-      <SelectInput optionText="numero_de_transacao" />
+      <SelectInput optionText="cliente" />
     </ReferenceInput>
   </Filter>
 );
 export const PagamentoList = (props) => (
   <List filters={<PostFilter />} {...props}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick={(id, basePath, record)=>{
+      return `/pagamentos?displayedFilters=%7B%7D&filter=%7B"cliente"%3A"${record.id}"%7D&order=ASC&page=1&perPage=10&sort=id`
+    }}>
       <NumberField source="id" />
       <DateField source="timestamp" />
       <NumberField source="valor" />
