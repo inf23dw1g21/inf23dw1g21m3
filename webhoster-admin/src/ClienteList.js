@@ -5,7 +5,9 @@ import {
     useRedirect,
     Create,
     SaveButton,
-    Toolbar
+    Toolbar,
+    NumberField,
+    NumberInput
 }from "react-admin";
 
 const PostTitle = () => {
@@ -23,7 +25,7 @@ const PostFilter = (props) => <Filter {...props}>
 export const ClienteList = (props) => (
     <List filters={<PostFilter />} {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
+            <NumberField source="id" />
             <TextField source="nome" />
             <TextField source="tipo_de_conta" />
             <TextField source="numero_fiscal" />
@@ -42,7 +44,7 @@ export const ClienteList = (props) => (
 export const ClienteEdit = (props) => (
     <Edit title={<PostTitle />} {...props}>
         <SimpleForm>
-            <TextInput disabled label="Id" source="id" />
+            <NumberInput disabled label="Id" source="id" />
             <TextInput source="nome" />
             <TextInput source="tipo_de_conta" />
             <TextInput source="numero_fiscal" />

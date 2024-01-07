@@ -1,7 +1,7 @@
 import {
     List, Datagrid, TextField, NumberField, DateField, EditButton, Edit, SimpleForm, TextInput,
     NumberInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton,
-    Toolbar, Create, useNotify, useRedirect
+    Toolbar, Create, useNotify, useRedirect,ReferenceField
 }
     from "react-admin";
 
@@ -16,13 +16,15 @@ const PostFilter = (props) => <Filter {...props}>
 export const DominioList = (props) => (
     <List filters={<PostFilter />} {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
+            <NumberField source="id" />
             <TextField source="nome" />
             <TextField source="codigo_TLD" />
             <BooleanField source="estado" />
             <DateField source="data_de_inicio" />
             <DateField source="data_de_fim" />
-            <NumberField source="cliente" />
+            <ReferenceField source="cliente" reference="clientes">
+                <TextField source="email" />
+            </ReferenceField>
             <EditButton />
         </Datagrid>
     </List>
@@ -34,13 +36,15 @@ const PostTitle = () => {
 export const DominioEdit = (props) => (
     <Edit title={<PostTitle />} {...props}>
         <SimpleForm>
-            <TextInput disabled label="Id" source="id" />
+            <NumberField disabled label="Id" source="id" />
             <TextInput source="nome" />
             <TextInput source="codigo_TLD" />
             <BooleanInput source="estado" />
             <TextInput source="data_de_inicio" defaultValue={"2018-03-20T09:12:28Z"}/>
             <TextInput source="data_de_fim" defaultValue={"2018-03-20T09:12:28Z"} />
-            <NumberInput source="cliente" />
+            <ReferenceInput source="cliente" reference="clientes">
+                <SelectInput optionText="email" optionValue="id"/>
+            </ReferenceInput>
         </SimpleForm>
     </Edit>
 );
@@ -76,6 +80,9 @@ export const DominioCreate = (props) => (
             <BooleanInput source="estado" />
             <TextInput source="data_de_inicio" defaultValue={"2023-03-20T09:12:28Z"} />
             <TextInput source="data_de_fim" defaultValue={"2024-03-20T09:12:28Z"}/>
+            <ReferenceInput source="cliente" reference="clientes">
+                <SelectInput optionText="email" optionValue="id"/>
+            </ReferenceInput>
         </SimpleForm>
     </Create>
 );

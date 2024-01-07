@@ -10,13 +10,12 @@ import EuroIcon from '@mui/icons-material/Euro';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import Dashboard from "./dashboard/Dashboard";
 
-const dataProvider = lb4Provider("http://localhost:3000");
 const App = () => (
- <Admin dashboard={Dashboard} dataProvider={dataProvider} >
+ <Admin dashboard={Dashboard} dataProvider={lb4Provider("http://localhost:3000")} >
  <Resource name="clientes" list={ClienteList} edit={ClienteEdit} create={ClienteCreate} icon={AttributionIcon}/>
+ <Resource name="dominios" list={DominioList} edit={DominioEdit} create={DominioCreate} icon={CloudCircleIcon} />
  <Resource name="pagamentos" list={PagamentoList} edit={PagamentoEdit} create={PagamentoCreate} icon={EuroIcon}/>
  <Resource name="planos" list={PlanoList} edit={PlanoEdit} create={PlanoCreate} icon={ImportContactsIcon}/>
- <Resource name="dominios" list={DominioList} edit={DominioEdit} create={DominioCreate} icon={CloudCircleIcon} />
  </Admin>
 );
 export default App;

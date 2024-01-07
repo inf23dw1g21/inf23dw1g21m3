@@ -1,6 +1,6 @@
 import {
     List, Datagrid, TextField, NumberField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton,
+    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, SaveButton,
     Toolbar, Create, useNotify, useRedirect
 }
     from "react-admin";
@@ -21,7 +21,7 @@ const PostFilter = (props) => <Filter {...props}>
 export const PlanoList = (props) => (
     <List filters={<PostFilter />} {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
+            <NumberField source="id" />
             <TextField source="tipo_de_plano" />
             <TextField source="periodicidade" />
             <NumberField source="preco" />
@@ -37,7 +37,7 @@ export const PlanoList = (props) => (
 export const PlanoEdit = (props) => (
     <Edit title={<PostTitle />} {...props}>
         <SimpleForm>
-            <TextInput disabled label="Id" source="id" />
+            <NumberInput disabled label="Id" source="id" />
             <TextInput source="tipo_de_plano" />
             <TextInput source="periodicidade" />
             <NumberInput source="preco" />
