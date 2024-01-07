@@ -65,3 +65,16 @@ const PostCreateToolbar = () => {
         </Toolbar>
         );
     };
+
+    export const DominioCreate = () => (
+        <Create title={<PostTitle />}>
+            <SimpleForm toolbar={<PostCreateToolbar/>}>
+                <TextInput source="nome" />
+                <TextInput source="codigo_TLD" />
+                <BooleanInput source="estado" />
+                <DateInput source="data_de_inicio" />
+                <DateInput source="data_de_fim" />
+                <NumberInput source="cliente" />
+            </SimpleForm>
+        </Create>
+    );

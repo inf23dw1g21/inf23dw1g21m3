@@ -1,24 +1,26 @@
-import {List, Datagrid, TextField, NumberField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton, 
-    Toolbar, Create, useNotify, useRedirect }
+import {
+    List, Datagrid, TextField, NumberField, EditButton, Edit, SimpleForm, TextInput,
+    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton,
+    Toolbar, Create, useNotify, useRedirect
+}
     from "react-admin";
 
 const PostTitle = () => {
     const record = useRecordContext();
-    return record ? (<span>Plano {`"${record.subject}"`}</span>):null;
-    }
+    return record ? (<span>Plano {`"${record.subject}"`}</span>) : null;
+}
 
-    const PostFilter = (props) => <Filter {...props}>
-<TextInput label="Procurar" source="periodicidade" alwaysOn />
-<ReferenceInput label="Plano" source="periodicidade"
-reference="planos" allowEmpty>
-<SelectInput optionText="periodicidade" />
-</ReferenceInput>
+const PostFilter = (props) => <Filter {...props}>
+    <TextInput label="Procurar" source="periodicidade" alwaysOn />
+    <ReferenceInput label="Plano" source="periodicidade"
+        reference="planos" allowEmpty>
+        <SelectInput optionText="periodicidade" />
+    </ReferenceInput>
 </Filter>
 
 export const PlanoList = (props) => (
     <List filters={<PostFilter />} {...props}>
-        <CreateButton/>
+        <CreateButton />
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="tipo_de_plano" />
@@ -29,7 +31,7 @@ export const PlanoList = (props) => (
             <NumberField source="numero_de_dominios" />
             <TextField source="largura_de_banda" />
             <TextField source="fidelizacao" />
-            <EditButton/>
+            <EditButton />
         </Datagrid>
     </List>
 );
@@ -49,24 +51,40 @@ export const PlanoEdit = () => (
     </Edit>
 );
 
-const PostCreateToolbar = () => {    
-    const redirect = useRedirect();    
+const PostCreateToolbar = () => {
+    const redirect = useRedirect();
     const notify = useNotify();
     return (
         <Toolbar>
-        <SaveButton label="Guardar e Mostrar"/>
-        <SaveButton label="Guardar" 
-        mutationOptions={{                    
-            onSuccess: data => {                        
-                notify('ra.notification.created', {                            
-                    type: 'info',                            
-                    messageArgs: { smart_count: 1 },                        
-                });                        
-                redirect(false);                    
-            }}                
-        }                
-        type="button"
-                variant="text"/>
+            <SaveButton label="Guardar e Mostrar" />
+            <SaveButton label="Guardar"
+                mutationOptions={{
+                    onSuccess: data => {
+                        notify('ra.notification.created', {
+                            type: 'info',
+                            messageArgs: { smart_count: 1 },
+                        });
+                        redirect(false);
+                    }
+                }
+                }
+                type="button"
+                variant="text" />
         </Toolbar>
-        );
-    };
+    );
+};
+
+export const PlanoCreate = () => (
+    <Create title={<PostTitle />}>
+        <SimpleForm toolbar={<PostCreateToolbar />}>
+            <TextInput source="tipo_de_plano" />
+            <TextInput source="periodicidade" />
+            <NumberInput source="preco" />
+            <TextInput source="armazenamento" />
+            <NumberInput source="numero_de_contas_email" />
+            <NumberInput source="numero_de_dominios" />
+            <TextInput source="largura_de_banda" />
+            <TextInput source="fidelizacao" />
+        </SimpleForm>
+    </Create>
+);
