@@ -1,6 +1,7 @@
 import {List, Datagrid, TextField, NumberField, DateField,
     EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, DateInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton }
+    NumberInput, DateInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton, 
+    Toolbar, Create, useNotify, useRedirect }
     from "react-admin";
 
 const PostTitle = () => {
@@ -32,8 +33,8 @@ export const PagamentoList = (props) => (
 export const PagamentoEdit = () => (
     <Edit title={<PostTitle />}>
         <SimpleForm>
-            <TextInput source="id" />
-            <DateInput source="timestamp" />
+            <TextInput disabled label="Id" source="id"  />
+            <TextInput source="timestamp" defaultValue={"2018-03-20T09:12:28Z"}/>
             <NumberInput source="valor" />
             <TextInput source="metodo_de_pagamento" />
             <TextInput source="numero_de_transacao" />
@@ -41,3 +42,36 @@ export const PagamentoEdit = () => (
         </SimpleForm>
     </Edit>
 );
+
+const PostCreateToolbar = () => {    
+    const redirect = useRedirect();    
+    const notify = useNotify();
+    return (
+        <Toolbar>
+        <SaveButton label="Guardar e Mostrar"/>
+        <SaveButton label="Guardar" 
+        mutationOptions={{                    
+            onSuccess: data => {                        
+                notify('ra.notification.created', {                            
+                    type: 'info',                            
+                    messageArgs: { smart_count: 1 },                        
+                });                        
+                redirect(false);                    
+            }}                
+        }                
+        type="button"
+                variant="text"/>
+        </Toolbar>
+        );
+    };
+
+    export const PagamentoCreate = () => (
+        <Create title={<PostTitle />}>
+            <SimpleForm toolbar={<PostCreateToolbar />}>
+                <TextInput source="timestamp" defaultValue={"2018-03-20T09:12:28Z"}/>
+                <NumberInput source="valor" />
+                <TextInput source="metodo_de_pagamento" />
+                <TextInput source="numero_de_transacao" />
+            </SimpleForm>
+        </Create>
+    );

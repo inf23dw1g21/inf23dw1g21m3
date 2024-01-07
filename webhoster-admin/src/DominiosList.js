@@ -1,5 +1,6 @@
 import {List, Datagrid, TextField, NumberField, DateField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, DateInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput, CreateButton }
+    NumberInput, DateInput, useRecordContext, BooleanField, BooleanInput, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton, 
+    Toolbar, Create, useNotify, useRedirect }
     from "react-admin";
 
 const PostFilter = (props) => <Filter {...props}>
@@ -32,7 +33,7 @@ const PostTitle = () => {
 export const DominioEdit = () => (
     <Edit title={<PostTitle />}>
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled label="Id" source="id" />
             <TextInput source="nome" />
             <TextInput source="codigo_TLD" />
             <BooleanInput source="estado" />
@@ -42,3 +43,25 @@ export const DominioEdit = () => (
         </SimpleForm>
     </Edit>
 );
+
+const PostCreateToolbar = () => {    
+    const redirect = useRedirect();    
+    const notify = useNotify();
+    return (
+        <Toolbar>
+        <SaveButton label="Guardar e Mostrar"/>
+        <SaveButton label="Guardar" 
+        mutationOptions={{                    
+            onSuccess: data => {                        
+                notify('ra.notification.created', {                            
+                    type: 'info',                            
+                    messageArgs: { smart_count: 1 },                        
+                });                        
+                redirect(false);                    
+            }}                
+        }                
+        type="button"
+                variant="text"/>
+        </Toolbar>
+        );
+    };

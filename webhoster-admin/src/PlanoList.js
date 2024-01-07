@@ -1,5 +1,6 @@
 import {List, Datagrid, TextField, NumberField, EditButton, Edit, SimpleForm, TextInput,
-    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton }
+    NumberInput, useRecordContext, Filter, ReferenceInput, SelectInput, CreateButton, SaveButton, 
+    Toolbar, Create, useNotify, useRedirect }
     from "react-admin";
 
 const PostTitle = () => {
@@ -35,7 +36,7 @@ export const PlanoList = (props) => (
 export const PlanoEdit = () => (
     <Edit title={<PostTitle />}>
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled label="Id" source="id" />
             <TextInput source="tipo_de_plano" />
             <TextInput source="periodicidade" />
             <NumberInput source="preco" />
@@ -47,3 +48,25 @@ export const PlanoEdit = () => (
         </SimpleForm>
     </Edit>
 );
+
+const PostCreateToolbar = () => {    
+    const redirect = useRedirect();    
+    const notify = useNotify();
+    return (
+        <Toolbar>
+        <SaveButton label="Guardar e Mostrar"/>
+        <SaveButton label="Guardar" 
+        mutationOptions={{                    
+            onSuccess: data => {                        
+                notify('ra.notification.created', {                            
+                    type: 'info',                            
+                    messageArgs: { smart_count: 1 },                        
+                });                        
+                redirect(false);                    
+            }}                
+        }                
+        type="button"
+                variant="text"/>
+        </Toolbar>
+        );
+    };
