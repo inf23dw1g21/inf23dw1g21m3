@@ -27,7 +27,27 @@
 .App-link {
   color: #61dafb;
 }
+.dashboard{
+  display: flex;
+  place-items: start;
+  width: 100%;
+  height: 100%;  
+  gap: 2em;
+}
 
+.dashboard-container {
+  flex-direction: row;
+  gap: 2em;
+  flex-wrap: wrap; /* Permite que os cartões mudem de linha quando não houver espaço suficiente */
+}
+
+.monthly-revenue-card{
+  height: fit-content; /* Defina a largura do cartão conforme necessário */
+  margin-bottom: 16px; /* Adicione margem inferior para separação entre os cartões */
+}
+.top-clients-card {
+  margin-bottom: 16px; /* Adicione margem inferior para separação entre os cartões */
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

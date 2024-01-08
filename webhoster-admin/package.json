@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
     "@loopback/repository": "^6.1.4",
     "@loopback/rest": "^13.1.4",
     "@mui/material": "^5.15.3",
@@ -16,8 +17,10 @@
     "react": "^18.2.0",
     "react-admin": "^4.16.5",
     "react-admin-lb4": "^1.0.3",
+    "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
     "react-query": "^3.39.3",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
