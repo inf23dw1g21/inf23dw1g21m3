@@ -53,10 +53,11 @@ export class Cliente extends Entity {
     required: true,
   })
   data_ultimo_pagamento: string;
+  
 
-  @belongsTo(() => Plano, {name: 'plano'})
+  @belongsTo(() => Plano, {keyFrom: 'planoId', name: 'plano'})
   plano: number;
-
+  
   @hasMany(() => Dominio, {keyTo: 'cliente'})
   dominios: Dominio[];
 

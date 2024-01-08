@@ -39,9 +39,9 @@ export class ClienteRepository extends DefaultCrudRepository<
     this.clientePagamentos = this.createHasManyRepositoryFactoryFor(
       'pagamentos',
       pagamentoRepositoryGetter, );
-    this.plano = this.createBelongsToAccessorFor(
-      'plano',
-      planoRepositoryGetter,
-    );
+      this.plano = this.createBelongsToAccessorFor(
+        'plano', 
+        planoRepositoryGetter, 
+      );
   }
 }

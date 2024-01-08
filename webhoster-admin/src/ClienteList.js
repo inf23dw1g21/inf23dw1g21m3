@@ -20,6 +20,7 @@ import {
   Toolbar,
   NumberField,
   NumberInput,
+  DateTimeInput,
 } from "react-admin";
 
 const PostTitle = () => {
@@ -96,11 +97,7 @@ export const ClienteList = (props) => (
         <TextInput source="email" defaultValue={"a05405@umaia.pt"} />
         <TextInput source="contacto" defaultValue={"54604606046"} />
         <TextInput source="periodicidade_de_pagamento" defaultValue={"Mensal"} />
-        <TextInput source="data_ultimo_pagamento" defaultValue={"2018-03-20T09:12:28Z"} />
-        <ReferenceInput source="plano" reference="planos">
-          <SelectInput optionText="tipo_de_plano" />
-        </ReferenceInput>
-        <NumberInput source="plano" />
+        <DateTimeInput source="data_ultimo_pagamento" defaultValue={new Date()} />
       </SimpleForm>
     </Create>
   );
@@ -115,7 +112,7 @@ export const ClienteList = (props) => (
         <TextInput source="email" />
         <TextInput source="contacto" />
         <TextInput source="periodicidade_de_pagamento" />
-        <TextInput source="data_ultimo_pagamento" />
+        <DateTimeInput source="data_ultimo_pagamento" />
         <ReferenceInput source="plano" reference="planos">
           <SelectInput optionText="tipo_de_plano" />
         </ReferenceInput>

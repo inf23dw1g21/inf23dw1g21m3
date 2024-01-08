@@ -21,5 +21,6 @@ COPY --chown=node package*.json ./
 COPY --chown=node . .
 RUN chown -R node /home/node/app
 RUN npm install
+RUN npm run migrate
 EXPOSE 3000
 CMD ["sh", "-c", "sleep 10 && npm start"]
