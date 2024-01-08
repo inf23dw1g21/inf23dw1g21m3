@@ -8,7 +8,8 @@ import AttributionIcon from '@mui/icons-material/Attribution';
 import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import EuroIcon from '@mui/icons-material/Euro';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
-import Dashboard from "./dashboard/Dashboard";
+import Dashboard from "./Dashboard";
+
 
 const App = () => (
  <Admin dashboard={Dashboard} dataProvider={lb4Provider("http://localhost:3000")} >
