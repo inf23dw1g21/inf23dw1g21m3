@@ -27,26 +27,39 @@
 .App-link {
   color: #61dafb;
 }
-.dashboard{
+.dashboard {
   display: flex;
-  place-items: start;
-  width: 100%;
-  height: 100%;  
+  flex-direction: column-reverse;
+  width: full;
+  height: full;
   gap: 2em;
+  padding: 2em;
 }
 
 .dashboard-container {
+  display: flex;
   flex-direction: row;
   gap: 2em;
-  flex-wrap: wrap; /* Permite que os cartões mudem de linha quando não houver espaço suficiente */
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.monthly-revenue-card{
-  height: fit-content; /* Defina a largura do cartão conforme necessário */
-  margin-bottom: 16px; /* Adicione margem inferior para separação entre os cartões */
-}
+.monthly-revenue-card,
+.metodo-pagamento-card,
+.pie-chart-card,
 .top-clients-card {
-  margin-bottom: 16px; /* Adicione margem inferior para separação entre os cartões */
+  width: calc(50% - 1em); /* Largura de 50% com um espaçamento de 1em entre os cartões */
+  margin-bottom: 1em;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  .monthly-revenue-card,
+  .metodo-pagamento-card,
+  .pie-chart-card,
+  .top-clients-card {
+    width: 100%; /* Em telas menores, ocupar 100% da largura */
+  }
 }
 @keyframes App-logo-spin {
   from {
