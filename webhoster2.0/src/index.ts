@@ -27,8 +27,12 @@ if (require.main === module) {
       // See https://www.npmjs.com/package/stoppable
       gracePeriodForClose: 5000, // 5 seconds
       openApiSpec: {
-        // useful when used with OpenAPI-to-GraphQL to locate your application
-        setServersFromRequest: true,
+        servers: [{url: 'http://127.0.0.1:3000'}],
+        setServersFromRequest: false,
+        endpointMapping: {
+          '/openapi.json': {version: '3.0.0', format: 'json'},
+          '/openapi.yaml': {version: '3.0.0', format: 'yaml'},
+        },
       },
     },
   };
