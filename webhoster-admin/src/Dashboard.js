@@ -184,7 +184,7 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         <Card className="pie-chart-card">
-          <CardHeader title="Porcentagem de Domínios Ativos e Inativos" />
+          <CardHeader title="Percentagem de Domínios Ativos e Inativos" />
           <CardContent>
             <ReactApexChart
               options={pieChartOptions}
