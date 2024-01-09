@@ -22,7 +22,7 @@ export const DominioList = (props) => (
             <BooleanField source="estado" />
             <DateField source="data_de_inicio" />
             <DateField source="data_de_fim" />
-            <ReferenceField source="cliente" reference="clientes">
+            <ReferenceField source="clienteId" reference="clientes">
                 <TextField source="email" />
             </ReferenceField>
             <EditButton />
@@ -42,7 +42,7 @@ export const DominioEdit = (props) => (
             <BooleanInput source="estado" />
             <TextInput source="data_de_inicio" defaultValue={"2018-03-20T09:12:28Z"}/>
             <TextInput source="data_de_fim" defaultValue={"2018-03-20T09:12:28Z"} />
-            <ReferenceInput source="cliente" reference="clientes">
+            <ReferenceInput source="clienteId" reference="clientes">
                 <SelectInput/>
             </ReferenceInput>
         </SimpleForm>
@@ -80,7 +80,7 @@ export const DominioCreate = (props) => (
             <BooleanInput source="estado" />
             <TextInput source="data_de_inicio" defaultValue={"2023-03-20T09:12:28Z"} />
             <TextInput source="data_de_fim" defaultValue={"2024-03-20T09:12:28Z"}/>
-            <ReferenceInput source="cliente" reference="clientes">
+            <ReferenceInput source="clienteId" reference="clientes">
                 <SelectInput/>
             </ReferenceInput>
         </SimpleForm>

@@ -23,7 +23,7 @@ import {ClienteRepository} from '../repositories';
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
-    public clienteRepository: ClienteRepository,
+    public clienteRepository : ClienteRepository,
   ) {}
 
   @post('/clientes')
@@ -52,7 +52,9 @@ export class ClienteController {
     description: 'Cliente model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(@param.where(Cliente) where?: Where<Cliente>): Promise<Count> {
+  async count(
+    @param.where(Cliente) where?: Where<Cliente>,
+  ): Promise<Count> {
     return this.clienteRepository.count(where);
   }
 
@@ -90,17 +92,7 @@ export class ClienteController {
     cliente: Cliente,
     @param.where(Cliente) where?: Where<Cliente>,
   ): Promise<Count> {
-    const data = {
-      nome: cliente.nome,
-      tipo_de_conta: cliente.tipo_de_conta,
-      numero_fiscal: cliente.numero_fiscal,
-      email: cliente.email,
-      contacto: cliente.contacto,
-      periodicidade_de_pagamento: cliente.periodicidade_de_pagamento,
-      data_ultimo_pagamento: cliente.data_ultimo_pagamento,
-      planoId: cliente.plano, // Use a chave estrangeira
-    };
-    return await this.clienteRepository.updateAll(data, where);
+    return this.clienteRepository.updateAll(cliente, where);
   }
 
   @get('/clientes/{id}')
@@ -114,8 +106,7 @@ export class ClienteController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Cliente, {exclude: 'where'})
-    filter?: FilterExcludingWhere<Cliente>,
+    @param.filter(Cliente, {exclude: 'where'}) filter?: FilterExcludingWhere<Cliente>
   ): Promise<Cliente> {
     return this.clienteRepository.findById(id, filter);
   }
@@ -135,17 +126,7 @@ export class ClienteController {
     })
     cliente: Cliente,
   ): Promise<void> {
-    const data = {
-      nome: cliente.nome,
-      tipo_de_conta: cliente.tipo_de_conta,
-      numero_fiscal: cliente.numero_fiscal,
-      email: cliente.email,
-      contacto: cliente.contacto,
-      periodicidade_de_pagamento: cliente.periodicidade_de_pagamento,
-      data_ultimo_pagamento: cliente.data_ultimo_pagamento,
-      planoId: cliente.plano, // Use a chave estrangeira
-    };
-    return await this.clienteRepository.updateById(id, data);
+    await this.clienteRepository.updateById(id, cliente);
   }
 
   @put('/clientes/{id}')

@@ -10,9 +10,9 @@ export class PlanoRepository extends DefaultCrudRepository<
   PlanoRelations
 > {
   public readonly clientesPlano: HasManyRepositoryFactory<
-    Cliente,
-    typeof Plano.prototype.id
-    >;
+  Cliente,
+  typeof Plano.prototype.id
+  >;
   constructor(
     @inject('datasources.db') dataSource: DbDataSource,
     @repository.getter('ClienteRepository')

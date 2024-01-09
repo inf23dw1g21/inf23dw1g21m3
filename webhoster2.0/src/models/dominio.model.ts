@@ -1,5 +1,5 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
-import {Cliente} from './cliente.model';
+import {Entity, model, property} from '@loopback/repository';
+
 
 @model()
 export class Dominio extends Entity {
@@ -39,10 +39,11 @@ export class Dominio extends Entity {
     required: true,
   })
   data_de_fim: string;
+  @property({
+    type: 'number',
+  })
+  clienteId?: number;
  
-  @belongsTo(() => Cliente, {name: 'cliente'})
-    cliente: number;
-
 
   constructor(data?: Partial<Dominio>) {
     super(data);

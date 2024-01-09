@@ -55,8 +55,11 @@
     "@loopback/rest": "^13.1.4",
     "@loopback/rest-explorer": "^6.1.4",
     "@loopback/service-proxy": "^6.1.4",
+    "@mui/core": "^5.0.0-alpha.54",
+    "import": "^0.0.6",
     "loopback-connector-mysql": "^5.4.4",
     "mysql2": "^3.6.5",
+    "path": "^0.12.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

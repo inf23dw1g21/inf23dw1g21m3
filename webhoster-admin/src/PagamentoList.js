@@ -49,7 +49,7 @@ export const PagamentoList = (props) => (
       <NumberField source="valor" />
       <TextField source="metodo_de_pagamento" />
       <TextField source="numero_de_transacao" />
-      <ReferenceField source="cliente" reference="clientes">
+      <ReferenceField source="clienteId" reference="clientes">
         <TextField source="email" />
       </ReferenceField>
       <EditButton />
@@ -64,7 +64,7 @@ export const PagamentoEdit = (props) => (
       <NumberInput source="valor" />
       <TextInput source="metodo_de_pagamento" />
       <TextInput source="numero_de_transacao" />
-      <ReferenceInput source="cliente" reference="clientes">
+      <ReferenceInput source="clienteId" reference="clientes">
         <SelectInput />
       </ReferenceInput>
     </SimpleForm>
@@ -102,7 +102,7 @@ export const PagamentoCreate = (props) => (
       <NumberInput source="valor" />
       <TextInput source="metodo_de_pagamento" />
       <TextInput source="numero_de_transacao" />
-      <ReferenceInput source="cliente" reference="clientes">
+      <ReferenceInput source="clienteId" reference="clientes">
         <SelectInput />
       </ReferenceInput>
     </SimpleForm>

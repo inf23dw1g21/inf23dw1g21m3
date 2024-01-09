@@ -56,7 +56,7 @@ export const ClienteList = (props) => (
       <TextField source="contacto" />
       <TextField source="periodicidade_de_pagamento" />
       <DateField source="data_ultimo_pagamento" />
-      <ReferenceField source="plano" reference="planos">
+      <ReferenceField source="planoId" reference="planos">
         <TextField source="tipo_de_plano" />
       </ReferenceField>
       <EditButton />
@@ -98,6 +98,9 @@ export const ClienteList = (props) => (
         <TextInput source="contacto" defaultValue={"54604606046"} />
         <TextInput source="periodicidade_de_pagamento" defaultValue={"Mensal"} />
         <DateTimeInput source="data_ultimo_pagamento" defaultValue={new Date()} />
+        <ReferenceInput source="planoId" reference="planos">
+          <SelectInput optionText="tipo_de_plano" />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   );
@@ -113,10 +116,10 @@ export const ClienteList = (props) => (
         <TextInput source="contacto" />
         <TextInput source="periodicidade_de_pagamento" />
         <DateTimeInput source="data_ultimo_pagamento" />
-        <ReferenceInput source="plano" reference="planos">
+        <ReferenceInput source="planoId" reference="planos">
           <SelectInput optionText="tipo_de_plano" />
         </ReferenceInput>
-        <NumberInput source="plano" />
+        <NumberInput source="planoId" />
       </SimpleForm>
     </Edit>
   );

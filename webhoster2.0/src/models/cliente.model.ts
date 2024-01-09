@@ -1,5 +1,4 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
-import {Plano} from './plano.model';
+import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Dominio} from './dominio.model';
 import {Pagamento} from './pagamento.model';
 
@@ -54,14 +53,16 @@ export class Cliente extends Entity {
   })
   data_ultimo_pagamento: string;
   
-
-  @belongsTo(() => Plano, {keyFrom: 'planoId', name: 'plano'})
-  plano: number;
+  @property({
+    type: 'number',
+  })
+  planoId?: number;
   
-  @hasMany(() => Dominio, {keyTo: 'cliente'})
+
+  @hasMany(() => Dominio, {keyTo: 'clienteId'})
   dominios: Dominio[];
 
-  @hasMany(() => Pagamento, {keyTo: 'cliente'})
+  @hasMany(() => Pagamento, {keyTo: 'clienteId'})
   pagamentos: Pagamento[];
 
   constructor(data?: Partial<Cliente>) {

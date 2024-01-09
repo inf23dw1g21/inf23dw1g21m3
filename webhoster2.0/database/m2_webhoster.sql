@@ -30,7 +30,7 @@ CREATE TABLE `Cliente` (
   `contacto` varchar(512) NOT NULL,
   `periodicidade_de_pagamento` varchar(512) NOT NULL,
   `data_ultimo_pagamento` datetime NOT NULL,
-  `plano` int DEFAULT NULL,
+  `planoId` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 INSERT INTO `Cliente` VALUES (1,'João Silva','Empresarial','123456789','joao@empresa.com','912345678','Mensal','2023-11-30 00:00:00',1),(2,'Maria Santos','Pessoal','234567890','maria@santos.com','923456789','Anual','2023-12-31 00:00:00',1),(3,'Pedro Costa','Empresarial','345678901','pedro@costa.com','934567890','Mensal','2023-11-30 00:00:00',1),(4,'Ana Sousa','Pessoal','456789012','ana@sousa.com','945678901','Anual','2023-12-31 00:00:00',2),(5,'Rui Oliveira','Empresarial','567890123','rui@oliveira.com','956789012','Mensal','2023-11-30 00:00:00',2),(6,'Carla Dias','Pessoal','678901234','carla@dias.com','967890123','Anual','2023-12-31 00:00:00',2),(7,'Bruno Fernandes','Empresarial','789012345','bruno@fernandes.com','978901234','Mensal','2023-11-30 00:00:00',2),(8,'Sofia Martins','Pessoal','890123456','sofia@martins.com','989012345','Anual','2023-12-31 00:00:00',3),(9,'Carlos Mendes','Empresarial','901234567','carlos@mendes.com','990123456','Mensal','2023-11-30 00:00:00',3),(10,'Lara Gomes','Pessoal','012345678','lara@gomes.com','901234567','Anual','2023-12-31 00:00:00',4),(11,'Tiago Nunes','Empresarial','112233445','tiago@nunes.com','911223344','Mensal','2023-11-30 00:00:00',4),(12,'Sara Rocha','Pessoal','223344556','sara@rocha.com','922334455','Anual','2023-12-31 00:00:00',4),(13,'Miguel Alves','Empresarial','334455667','miguel@alves.com','933445566','Mensal','2023-11-30 00:00:00',5),(14,'Clara Pinto','Pessoal','445566778','clara@pinto.com','944556677','Anual','2023-12-31 00:00:00',5),(15,'Ricardo Lima','Empresarial','556677889','ricardo@lima.com','955667788','Mensal','2023-11-30 00:00:00',5),(16,'Beatriz Cardoso','Pessoal','667788990','beatriz@cardoso.com','966778899','Anual','2023-12-31 00:00:00',5),(17,'André Correia','Empresarial','778899001','andre@correia.com','977889900','Mensal','2023-11-30 00:00:00',6),(18,'Inês Marques','Pessoal','889900112','ines@marques.com','988990011','Anual','2023-12-31 00:00:00',6),(19,'Diogo Silva','Empresarial','990011223','diogo@silva.com','999001122','Mensal','2023-11-30 00:00:00',7),(20,'Marta Reis','Pessoal','001122334','marta@reis.com','900112233','Anual','2023-12-31 00:00:00',7),(21,'Filipe Moreira','Empresarial','121212121','filipe@moreira.com','912121212','Mensal','2023-11-30 00:00:00',7),(22,'Catarina Lopes','Pessoal','232323232','catarina@lopes.com','923232323','Anual','2023-12-31 00:00:00',8),(23,'Gonçalo Ribeiro','Empresarial','343434343','goncalo@ribeiro.com','934343434','Mensal','2023-11-30 00:00:00',8),(24,'Joana Ferreira','Pessoal','454545454','joana@ferreira.com','945454545','Anual','2023-12-31 00:00:00',9),(25,'Daniel Santos','Empresarial','565656565','daniel@santos.com','956565656','Mensal','2023-11-30 00:00:00',9),(26,'Leonor Costa','Pessoal','676767676','leonor@costa.com','967676767','Anual','2023-12-31 00:00:00',10),(27,'Hugo Rodrigues','Empresarial','787878787','hugo@rodrigues.com','978787878','Mensal','2023-11-30 00:00:00',10),(28,'Eva Oliveira','Pessoal','898989898','eva@oliveira.com','989898989','Anual','2023-12-31 00:00:00',10),(29,'Marco Dias','Empresarial','909090909','marco@dias.com','990909090','Mensal','2023-11-30 00:00:00',10),(30,'Laura Monteiro','Pessoal','010101010','laura@monteiro.com','901010101','Anual','2023-12-31 00:00:00',5),(31,'João Mono','Pessoal','PT005020505','a05405@umaia.pt','54604606046','Mensal','2018-03-20 09:12:28',NULL);
@@ -45,7 +45,7 @@ CREATE TABLE `Dominio` (
   `estado` tinyint(1) NOT NULL,
   `data_de_inicio` datetime NOT NULL,
   `data_de_fim` datetime NOT NULL,
-  `cliente` int DEFAULT NULL,
+  `clienteId` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 ;
 
@@ -59,7 +59,7 @@ CREATE TABLE `Pagamento` (
   `valor` int NOT NULL,
   `metodo_de_pagamento` varchar(512) NOT NULL,
   `numero_de_transacao` varchar(512) NOT NULL,
-  `cliente` int DEFAULT NULL,
+  `clienteId` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 ;
 

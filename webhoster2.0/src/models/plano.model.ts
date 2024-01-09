@@ -58,7 +58,7 @@ export class Plano extends Entity {
   })
   fidelizacao: string;
 
-  @hasMany(() => Cliente, {keyTo: 'plano'})
+  @hasMany(() => Cliente, {keyTo: 'planoId'})
   clientes: Cliente[];
 
   constructor(data?: Partial<Plano>) {
