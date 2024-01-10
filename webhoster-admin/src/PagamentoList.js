@@ -18,7 +18,7 @@ import {
   Create,
   useNotify,
   useRedirect,
-  ReferenceField
+  ReferenceField,
 } from "react-admin";
 
 const PostTitle = () => {
@@ -41,9 +41,11 @@ const PostFilter = (props) => (
 );
 export const PagamentoList = (props) => (
   <List filters={<PostFilter />} {...props}>
-    <Datagrid rowClick={(id, basePath, record)=>{
-      return `/pagamentos?displayedFilters=%7B%7D&filter=%7B"cliente"%3A"${record.id}"%7D&order=ASC&page=1&perPage=10&sort=id`
-    }}>
+    <Datagrid
+      rowClick={(id, basePath, record) => {
+        return `/pagamentos?displayedFilters=%7B%7D&filter=%7B"cliente"%3A"${record.id}"%7D&order=ASC&page=1&perPage=10&sort=id`;
+      }}
+    >
       <NumberField source="id" />
       <DateField source="timestamp" />
       <NumberField source="valor" />
@@ -65,8 +67,9 @@ export const PagamentoEdit = (props) => (
       <TextInput source="metodo_de_pagamento" />
       <TextInput source="numero_de_transacao" />
       <ReferenceInput source="clienteId" reference="clientes">
-        <SelectInput />
+        <SelectInput optionText="email" />
       </ReferenceInput>
+      <NumberInput source="clienteId" />
     </SimpleForm>
   </Edit>
 );
@@ -103,8 +106,9 @@ export const PagamentoCreate = (props) => (
       <TextInput source="metodo_de_pagamento" />
       <TextInput source="numero_de_transacao" />
       <ReferenceInput source="clienteId" reference="clientes">
-        <SelectInput />
+        <SelectInput optionText="email" />
       </ReferenceInput>
+      <NumberInput source="clienteId" />
     </SimpleForm>
   </Create>
 );
