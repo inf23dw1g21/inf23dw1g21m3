@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mysql:
-    image: mysql:5.7
+    image: inf23dwg21/webhoster1.0:webhoster-mysql5.7
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: webhoster
@@ -18,7 +18,7 @@ services:
       - webhoster
 
   webhoster2.1:
-    image: node:20
+    image: inf23dwg21/webhoster1.0:webhoster-lb4
     build:
       context: ./webhoster2.1
     depends_on:
@@ -40,7 +40,7 @@ services:
       - webhoster
 
   webhoster-admin:
-    image: node:18
+    image: inf23dwg21/webhoster1.0:webhoster-admin
     environment:
       SERVICE_TAGS: prod
     build:

@@ -1,5 +1,5 @@
 # Use the official Node image with version 14
-FROM node:18
+FROM inf23dwg21/webhoster1.0:webhoster-admin
 
 # Set the working directory
 WORKDIR /app
