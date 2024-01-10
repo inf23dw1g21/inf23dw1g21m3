@@ -61,8 +61,8 @@ const Dashboard = () => {
 
       const pagamentosPorCliente = pagamentosAno2024Filtrados.reduce(
         (acc, pagamento) => {
-          acc[pagamento.cliente] =
-            (acc[pagamento.cliente] || 0) + pagamento.valor;
+          acc[pagamento.clienteId] =
+            (acc[pagamento.clienteId] || 0) + pagamento.valor;
           return acc;
         },
         {}
