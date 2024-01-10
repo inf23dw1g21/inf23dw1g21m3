@@ -1,20 +1,20 @@
-# pull official base image
-FROM node:17.0.1-alpine3.14
+# Use the official Node image with version 14
+FROM node:18
 
-# set working directory
+# Set the working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
 
-# install app dependencies
-COPY package.json ./
+# Install dependencies
 RUN npm install
 
-# add app
+# Copy the rest of the application code to the container
 COPY . .
 
+# Expose the port the app runs on
 EXPOSE 3006
 
-# start app
+# Start the application
 CMD ["npm", "start"]

@@ -6,7 +6,7 @@ import MonthlyRevenue from "./components/card/MonthlyRevenue";
 import MetodoDePagamento from "./components/card/MetodoDePagamento";
 import "./App.css";
 const Dashboard = () => {
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
 
   // Obtém a lista de clientes
   const {

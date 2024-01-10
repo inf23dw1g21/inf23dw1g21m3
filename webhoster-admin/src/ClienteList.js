@@ -90,7 +90,7 @@ export const ClienteList = (props) => (
   };
   export const ClienteCreate = (props) => (
     <Create {...props}>
-      <SimpleForm>
+      <SimpleForm toolbar={<PostCreateToolbar/>}>
         <TextInput source="nome" defaultValue={"João Mono"} />
         <TextInput source="tipo_de_conta" defaultValue={"Pessoal"} />
         <TextInput source="numero_fiscal" defaultValue={"PT005020505"} />

@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: webhoster
+    ports:
+      - "3307:3306"
+    expose:
+      - 3006
+    volumes:
+      ### Boa prática, criar um script para ser executado automaticamente quando o coteiner é iniciado pela 1º vez ###
+      - ./database/m2_webhoster.sql:/docker-entrypoint-initdb.d/m2_webhoster.sql
+    container_name: mysql
+    networks:
+      - webhoster
+
+  webhoster2.1:
+    image: node:20
+    build:
+      context: ./webhoster2.1
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: webhoster
+      SERVICE_TAGS: prod
+    container_name: webhoster-lb4
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    networks:
+      - webhoster
+
+  webhoster-admin:
+    image: node:18
+    environment:
+      SERVICE_TAGS: prod
+    build:
+      context: ./webhoster-admin
+    ports:
+      - "3006:3006"
+    expose:
+      - 3006
+    container_name: webhoster-admin
+    networks:
+      - webhoster
+
+networks:
+  webhoster:
+    driver: bridge
