@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3006
 
 # Start the application
-CMD ["npm", "start"]
+CMD ["sh", "-c", "sleep 10 && npm start"]
