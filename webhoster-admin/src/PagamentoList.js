@@ -35,7 +35,7 @@ const PostFilter = (props) => (
       reference="pagamentos"
       allowEmpty
     >
-      <SelectInput optionText="clienteId" />
+      <SelectInput optionText="id" />
     </ReferenceInput>
   </Filter>
 );
