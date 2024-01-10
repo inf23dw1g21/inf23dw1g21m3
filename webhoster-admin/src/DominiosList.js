@@ -6,10 +6,10 @@ import {
     from "react-admin";
 
 const PostFilter = (props) => <Filter {...props}>
-    <TextInput label="Procurar" source="cliente" alwaysOn />
-    <ReferenceInput label="Dominio" source="cliente"
+    <TextInput label="Procurar" source="clienteId" alwaysOn />
+    <ReferenceInput label="Dominio" source="clienteId"
         reference="dominios" allowEmpty>
-        <SelectInput optionText="cliente" />
+        <SelectInput optionText="clienteId" />
     </ReferenceInput>
 </Filter>
 

@@ -28,14 +28,14 @@ const PostTitle = () => {
 
 const PostFilter = (props) => (
   <Filter {...props}>
-    <TextInput label="Procurar" source="cliente" alwaysOn />
+    <TextInput label="Procurar" source="clienteId" alwaysOn />
     <ReferenceInput
       label="Pagamento"
-      source="cliente"
+      source="clienteId"
       reference="pagamentos"
       allowEmpty
     >
-      <SelectInput optionText="cliente" />
+      <SelectInput optionText="clienteId" />
     </ReferenceInput>
   </Filter>
 );
