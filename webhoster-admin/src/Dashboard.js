@@ -75,14 +75,14 @@ const Dashboard = () => {
       const top10Clientes = clientesOrdenados.slice(0, 10);
 
       const clientesMaisPagantesData = top10Clientes.map((clienteId) => {
-        const cliente = clientes.find((c) => c.id === parseInt(clienteId, 10));
+        const pagamentoTotal = pagamentosPorCliente[clienteId];
+        const clienteData = clientes.find((c) => c.id === parseInt(clienteId, 10));
+      
         return {
-          clienteNome: cliente ? cliente.nome : "Cliente Desconhecido",
-          clienteEmail: cliente
-            ? cliente.email
-            : "email_desconhecido@example.com",
-          clienteId: cliente ? cliente.id : null,
-          totalPago: pagamentosPorCliente[clienteId],
+          clienteNome: clienteData ? clienteData.nome : "Cliente Desconhecido",
+          clienteEmail: clienteData ? clienteData.email : "email_desconhecido@example.com",
+          clienteId: clienteData ? clienteData.id : null,
+          totalPago: pagamentoTotal,
         };
       });
       if (!pagamentosLoading && !pagamentosError && pagamentosAno2024) {
