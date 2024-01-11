@@ -38,10 +38,10 @@
 
 .dashboard-container {
   display: flex;
+  -ms-flex-align: baseline;
   flex-direction: row;
-  gap: 2em;
+  gap: 1em;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .monthly-revenue-card,
@@ -69,3 +69,14 @@
     transform: rotate(360deg);
   }
 }
+.flex {
+  display: flex;
+  justify-content: space-between;  /* Ajuste conforme necessário */
+  align-items: flex-start;         /* Ajuste conforme necessário */
+}
+
+.monthly-revenue-container {
+  display: flex;
+  flex-direction: column;
+}
+

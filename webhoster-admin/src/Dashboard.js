@@ -39,6 +39,9 @@ const Dashboard = () => {
 
   const [totalPagamentosAno2024, setTotalPagamentosAno2024] = useState(0);
   const [clientesMaisPagantes, setClientesMaisPagantes] = useState([]);
+  const [clientesComPagamentoAnual, setClientesComPagamentoAnual] = useState(0);
+  const [clientesComPagamentoMensal, setClientesComPagamentoMensal] =
+    useState(0);
   const [metodoPagamentoMaisUsado, setMetodoPagamentoMaisUsado] =
     useState(null);
   const [dominiosList, setDominiosList] = useState([]);
@@ -76,11 +79,15 @@ const Dashboard = () => {
 
       const clientesMaisPagantesData = top10Clientes.map((clienteId) => {
         const pagamentoTotal = pagamentosPorCliente[clienteId];
-        const clienteData = clientes.find((c) => c.id === parseInt(clienteId, 10));
-      
+        const clienteData = clientes.find(
+          (c) => c.id === parseInt(clienteId, 10)
+        );
+
         return {
           clienteNome: clienteData ? clienteData.nome : "Cliente Desconhecido",
-          clienteEmail: clienteData ? clienteData.email : "email_desconhecido@example.com",
+          clienteEmail: clienteData
+            ? clienteData.email
+            : "email_desconhecido@example.com",
           clienteId: clienteData ? clienteData.id : null,
           totalPago: pagamentoTotal,
         };
@@ -102,6 +109,21 @@ const Dashboard = () => {
         setMetodoPagamentoMaisUsado(maisUsado);
         setDominiosList(dominios);
       }
+      if (!clientesLoading && !clientesError && clientes) {
+        const clientesAnual = clientes.filter(
+          (cliente) => cliente.periodicidade_de_pagamento === "Anual"
+        );
+        const clientesMensal = clientes.filter(
+          (cliente) => cliente.periodicidade_de_pagamento === "Mensal"
+        );
+
+        setClientesComPagamentoAnual(
+          Math.round((clientesAnual.length / clientes.length) * 100)
+        );
+        setClientesComPagamentoMensal(
+          Math.round((clientesMensal.length / clientes.length) * 100)
+        );
+      }
       setClientesMaisPagantes(clientesMaisPagantesData);
     }
   }, [
@@ -115,6 +137,7 @@ const Dashboard = () => {
     dominiosLoading,
     dominiosError,
   ]);
+
 
   // Configuração do gráfico de barras horizontais
   const chartOptions = {
@@ -155,6 +178,71 @@ const Dashboard = () => {
       data: clientesMaisPagantes.map((cliente) => cliente.totalPago),
     },
   ];
+  const verticalBarChartOptions = {
+    chart: {
+      id: "vertical-bar",
+      type: "bar",
+      height: 350,
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+      },
+    },
+    dataLabels: {
+      enabled: true,
+    },
+    xaxis: {
+      categories: ["Anual", "Mensal"],
+    },
+    yaxis: {
+      labels: {
+        formatter: function (value) {
+          return value.toFixed(0) + "%"; // Formatar para exibir percentagem sem casas decimais
+        },
+      },
+    },
+  };
+
+  const verticalBarChartSeries = [
+    {
+      name: "Percentagem de Clientes",
+      data: [clientesComPagamentoAnual, clientesComPagamentoMensal],
+    },
+  ];
+
+  const codigosTLDDistintos = Array.from(new Set(dominiosList.map(d => d.codigo_TLD)));
+
+  // Conta a quantidade de domínios para cada código TLD
+  const contagemCodigosTLD = codigosTLDDistintos.map(codigoTLD => ({
+    codigoTLD,
+    quantidade: dominiosList.filter(d => d.codigo_TLD === codigoTLD).length,
+  }));
+
+  // Calcula a percentagem de cada código TLD em relação ao total de domínios
+  const percentagensCodigosTLD = contagemCodigosTLD.map(item => ({
+    codigoTLD: item.codigoTLD,
+    percentagem: Math.round((item.quantidade / dominiosList.length) * 100),
+  }));
+
+  // Configuração do novo pie chart para os códigos TLD
+  const pieChartCodigosTLDOptions = {
+    chart: {
+      id: "pie-chart-codigos-tld",
+      type: "pie",
+    },
+    labels: percentagensCodigosTLD.map(item => `${item.codigoTLD} (${item.percentagem.toFixed(0)}%)`),
+    colors: ["#FF5733", "#4CAF50", "#2196F3", "#FFC107", "#9C27B0"], // Adapte as cores conforme necessário
+  };
+
+  const pieChartCodigosTLDData = [
+    dominiosList.filter((dominio) => dominio.codigo_TLD == ".net").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD == ".io").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD == ".pt").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD == ".com").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD == ".org").length,
+  ];
+  // ... (restante do código)
 
   return (
     <div className="dashboard">
@@ -184,16 +272,17 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         <Card className="pie-chart-card">
-          <CardHeader title="Percentagem de Domínios Ativos e Inativos" />
+          <CardHeader title="Percentagem de Domínios por Código TLD" />
           <CardContent>
             <ReactApexChart
-              options={pieChartOptions}
-              series={pieChartData}
+              options={pieChartCodigosTLDOptions}
+              series={pieChartCodigosTLDData}
               type="pie"
               height={350}
             />
           </CardContent>
         </Card>
+        
         <Card className="top-clients-card">
           <CardHeader title=" Top 10 Clientes em 2024" />
           <CardContent>
@@ -201,6 +290,28 @@ const Dashboard = () => {
               options={chartOptions}
               series={chartSeries}
               type="bar"
+              height={350}
+            />
+          </CardContent>
+        </Card>
+        <Card className="top-clients-card">
+          <CardHeader title="Percentagem de Clientes por Periodicidade de Pagamento" />
+          <CardContent>
+            <ReactApexChart
+              options={verticalBarChartOptions}
+              series={verticalBarChartSeries}
+              type="bar"
+              height={350}
+            />
+          </CardContent>
+        </Card>
+        <Card className="pie-chart-card">
+          <CardHeader title="Percentagem de Domínios Ativos e Inativos" />
+          <CardContent>
+            <ReactApexChart
+              options={pieChartOptions}
+              series={pieChartData}
+              type="pie"
               height={350}
             />
           </CardContent>
