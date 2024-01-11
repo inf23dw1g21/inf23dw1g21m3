@@ -236,11 +236,11 @@ const Dashboard = () => {
   };
 
   const pieChartCodigosTLDData = [
-    dominiosList.filter((dominio) => dominio.codigo_TLD == ".net").length,
-    dominiosList.filter((dominio) => dominio.codigo_TLD == ".io").length,
-    dominiosList.filter((dominio) => dominio.codigo_TLD == ".pt").length,
-    dominiosList.filter((dominio) => dominio.codigo_TLD == ".com").length,
-    dominiosList.filter((dominio) => dominio.codigo_TLD == ".org").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD === ".net").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD === ".io").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD === ".pt").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD === ".com").length,
+    dominiosList.filter((dominio) => dominio.codigo_TLD === ".org").length,
   ];
   // ... (restante do código)
 
