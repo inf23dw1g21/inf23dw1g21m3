@@ -125,23 +125,23 @@ Este projeto consiste em duas partes: uma API construída com LoopBack 4 para ge
 
 ## Docker com as nossas imagens
 
-```Docker Images
+### Mysql
 
-    [mysql](https://hub.docker.com/layers/inf23dwg21/webhoster1.0/webhoster-mysql5.7/images/sha256-b880af57305b9a6b13714bb9638e9a7abea5df86afa34680d86f7263a7105911?context=repo)
-    
-    CMD
+```CMD
     docker pull inf23dwg21/webhoster1.0:webhoster-mysql5.7
-    
-    [react-admin](https://hub.docker.com/layers/inf23dwg21/webhoster1.0/webhoster-admin/images/sha256-7f5d888a6ae3b54b2858a41f6bd3f5518f25df7adc34e05b62e9b0220bd53d94?context=repo)
-    
-    CMD
+
+```
+
+### React-admin
+
+```CMD
     docker pull inf23dwg21/webhoster1.0:webhoster-admin
+```
 
-    [loopback4](https://hub.docker.com/layers/inf23dwg21/webhoster1.0/webhoster-lb4/images/sha256-e19c3db70dd701110e380f13cf50d6157f8b49b702fa611185e76da630436d73?context=repo)
-    
-    CMD
+### Loopback 4
+
+```CMD
     docker pull inf23dwg21/webhoster1.0:webhoster-lb4
-
 ```
 
 **Nota:** Este projeto é destinado apenas para fins educacionais e de teste. Não é recomendado para ambientes de produção sem configurações adicionais de segurança.
