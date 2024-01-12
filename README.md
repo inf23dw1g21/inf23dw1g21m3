@@ -42,7 +42,7 @@ Este projeto consiste em duas partes: uma API construída com LoopBack 4 para ge
 
     [http://localhost:3006](http://localhost:3006)
 
-    A API estará disponível em:
+    A API está disponível em:
 
     [http://localhost:3000](http://localhost:3000)
 
