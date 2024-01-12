@@ -40,11 +40,11 @@ Este projeto consiste em duas partes: uma API construída com LoopBack 4 para ge
 
 4. Acesse a interface do React Admin no navegador:
 
-    [http://localhost:3000](http://localhost:3000)
+    [http://localhost:3006](http://localhost:3006)
 
     A API estará disponível em:
 
-    [http://localhost:3001](http://localhost:3001)
+    [http://localhost:3000](http://localhost:3000)
 
 5. Explore e teste a plataforma de gerenciamento de domínios.
 
