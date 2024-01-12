@@ -39,6 +39,7 @@ const PostFilter = (props) => (
     </ReferenceInput>
   </Filter>
 );
+
 export const PagamentoList = (props) => (
   <List filters={<PostFilter />} {...props}>
     <Datagrid

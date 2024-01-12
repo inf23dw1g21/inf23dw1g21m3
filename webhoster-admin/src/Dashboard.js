@@ -4,6 +4,7 @@ import { useGetList } from "react-admin";
 import ReactApexChart from "react-apexcharts";
 import MonthlyRevenue from "./components/card/MonthlyRevenue";
 import MetodoDePagamento from "./components/card/MetodoDePagamento";
+import { Link } from "react-router-dom";
 import "./App.css";
 const Dashboard = () => {
   const [page] = useState(1);
@@ -138,7 +139,6 @@ const Dashboard = () => {
     dominiosError,
   ]);
 
-
   // Configuração do gráfico de barras horizontais
   const chartOptions = {
     chart: {
@@ -211,16 +211,18 @@ const Dashboard = () => {
     },
   ];
 
-  const codigosTLDDistintos = Array.from(new Set(dominiosList.map(d => d.codigo_TLD)));
+  const codigosTLDDistintos = Array.from(
+    new Set(dominiosList.map((d) => d.codigo_TLD))
+  );
 
   // Conta a quantidade de domínios para cada código TLD
-  const contagemCodigosTLD = codigosTLDDistintos.map(codigoTLD => ({
+  const contagemCodigosTLD = codigosTLDDistintos.map((codigoTLD) => ({
     codigoTLD,
-    quantidade: dominiosList.filter(d => d.codigo_TLD === codigoTLD).length,
+    quantidade: dominiosList.filter((d) => d.codigo_TLD === codigoTLD).length,
   }));
 
   // Calcula a percentagem de cada código TLD em relação ao total de domínios
-  const percentagensCodigosTLD = contagemCodigosTLD.map(item => ({
+  const percentagensCodigosTLD = contagemCodigosTLD.map((item) => ({
     codigoTLD: item.codigoTLD,
     percentagem: Math.round((item.quantidade / dominiosList.length) * 100),
   }));
@@ -231,7 +233,9 @@ const Dashboard = () => {
       id: "pie-chart-codigos-tld",
       type: "pie",
     },
-    labels: percentagensCodigosTLD.map(item => `${item.codigoTLD} (${item.percentagem.toFixed(0)}%)`),
+    labels: percentagensCodigosTLD.map(
+      (item) => `${item.codigoTLD} (${item.percentagem.toFixed(0)}%)`
+    ),
     colors: ["#FF5733", "#4CAF50", "#2196F3", "#FFC107", "#9C27B0"], // Adapte as cores conforme necessário
   };
 
@@ -252,7 +256,11 @@ const Dashboard = () => {
             <Typography variant="h6">
               <MonthlyRevenue
                 value={
-                  "Rendimento 2024: " + totalPagamentosAno2024.toFixed(2) + "€"
+                  <Link to="http://localhost:3006/pagamentos?displayedFilters=%7B%7D&filter=%7B%22ano%22%3A%2210%22%7D&order=DESC&page=1&perPage=10&sort=timestamp">
+                    {"Rendimento 2024: " +
+                      totalPagamentosAno2024.toFixed(2) +
+                      "€"}
+                  </Link>
                 }
               />
             </Typography>
@@ -262,10 +270,11 @@ const Dashboard = () => {
           <CardContent>
             <Typography variant="body1">
               <MetodoDePagamento
-                value={
-                  metodoPagamentoMaisUsado
+                value={ <Link to="http://localhost:3006/pagamentos?displayedFilters=%7B%7D&filter=%7B%22ano%22%3A%2210%22%7D&order=DESC&page=1&perPage=10&sort=valor">
+                  {metodoPagamentoMaisUsado
                     ? `O método de Pagamento mais usado é o  ${metodoPagamentoMaisUsado}`
-                    : "Carregando..."
+                    : "Carregando..."}
+                </Link>
                 }
               />
             </Typography>
@@ -282,7 +291,7 @@ const Dashboard = () => {
             />
           </CardContent>
         </Card>
-        
+
         <Card className="top-clients-card">
           <CardHeader title=" Top 10 Clientes em 2024" />
           <CardContent>
