@@ -21,7 +21,7 @@ Este projeto consiste em duas partes: uma API construída com LoopBack 4 para ge
 1. Clone o repositório:
 
     ```CMD
-    git clone https://seurepositorio.com/webhoster.git
+    git clone https://github.com/inf23dw1g21/inf23dw1g21m3.git
     ```
 
 2. Navegue até a pasta raiz do projeto:
