@@ -1,0 +1,3816 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "webhoster2.1",
+        "version": "0.0.1",
+        "description": "webhoster2.1",
+        "contact": {
+            "name": "Karim Patatas",
+            "email": "66632918+Sen2pi@users.noreply.github.com"
+        }
+    },
+    "paths": {
+        "/clientes/count": {
+            "get": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "count",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Cliente.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Cliente>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClienteController.count"
+            }
+        },
+        "/clientes/{id}/dominios": {
+            "post": {
+                "x-controller-name": "ClienteDominioController",
+                "x-operation-name": "create",
+                "tags": [
+                    "ClienteDominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Dominio"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewDominioInCliente"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "ClienteDominioController.create"
+            },
+            "patch": {
+                "x-controller-name": "ClienteDominioController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "ClienteDominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente.Dominio PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Dominio.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Dominio>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DominioPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "ClienteDominioController.patch"
+            },
+            "get": {
+                "x-controller-name": "ClienteDominioController",
+                "x-operation-name": "find",
+                "tags": [
+                    "ClienteDominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Cliente has many Dominio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Dominio"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClienteDominioController.find"
+            },
+            "delete": {
+                "x-controller-name": "ClienteDominioController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "ClienteDominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente.Dominio DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Dominio.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Dominio>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClienteDominioController.delete"
+            }
+        },
+        "/clientes/{id}/pagamentos": {
+            "post": {
+                "x-controller-name": "ClientePagamentoController",
+                "x-operation-name": "create",
+                "tags": [
+                    "ClientePagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Pagamento"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewPagamentoInCliente"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "ClientePagamentoController.create"
+            },
+            "patch": {
+                "x-controller-name": "ClientePagamentoController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "ClientePagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente.Pagamento PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Pagamento.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Pagamento>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PagamentoPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "ClientePagamentoController.patch"
+            },
+            "get": {
+                "x-controller-name": "ClientePagamentoController",
+                "x-operation-name": "find",
+                "tags": [
+                    "ClientePagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Cliente has many Pagamento",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Pagamento"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClientePagamentoController.find"
+            },
+            "delete": {
+                "x-controller-name": "ClientePagamentoController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "ClientePagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente.Pagamento DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Pagamento.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Pagamento>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClientePagamentoController.delete"
+            }
+        },
+        "/clientes/{id}/plano": {
+            "get": {
+                "x-controller-name": "ClientePlanoController",
+                "x-operation-name": "getPlano",
+                "tags": [
+                    "ClientePlanoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano belonging to Cliente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plano"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "ClientePlanoController.getPlano"
+            }
+        },
+        "/clientes/{id}": {
+            "put": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Cliente PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cliente"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "ClienteController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Cliente PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClientePartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "ClienteController.updateById"
+            },
+            "get": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClienteWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClienteController.findById"
+            },
+            "delete": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Cliente DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "ClienteController.deleteById"
+            }
+        },
+        "/clientes": {
+            "post": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "create",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewCliente"
+                            }
+                        }
+                    }
+                },
+                "operationId": "ClienteController.create"
+            },
+            "patch": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Cliente.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Cliente>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClientePartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "ClienteController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "ClienteController",
+                "x-operation-name": "find",
+                "tags": [
+                    "ClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Cliente model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ClienteWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente.Filter1"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "ClienteController.find"
+            }
+        },
+        "/dominios/count": {
+            "get": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "count",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dominio model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Dominio.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Dominio>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "DominioController.count"
+            }
+        },
+        "/dominios/{id}/cliente": {
+            "get": {
+                "x-controller-name": "DominioClienteController",
+                "x-operation-name": "getCliente",
+                "tags": [
+                    "DominioClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente belonging to Dominio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "DominioClienteController.getCliente"
+            }
+        },
+        "/dominios/{id}": {
+            "put": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Dominio PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Dominio"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "DominioController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Dominio PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DominioPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "DominioController.updateById"
+            },
+            "get": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dominio model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DominioWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Dominio.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "DominioController.findById"
+            },
+            "delete": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Dominio DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "DominioController.deleteById"
+            }
+        },
+        "/dominios": {
+            "post": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "create",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dominio model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Dominio"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewDominio"
+                            }
+                        }
+                    }
+                },
+                "operationId": "DominioController.create"
+            },
+            "patch": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dominio PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Dominio.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Dominio>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DominioPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "DominioController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "DominioController",
+                "x-operation-name": "find",
+                "tags": [
+                    "DominioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Dominio model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DominioWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Dominio.Filter1"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "DominioController.find"
+            }
+        },
+        "/pagamentos/count": {
+            "get": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "count",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pagamento model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Pagamento.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Pagamento>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PagamentoController.count"
+            }
+        },
+        "/pagamentos/{id}/cliente": {
+            "get": {
+                "x-controller-name": "PagamentoClienteController",
+                "x-operation-name": "getCliente",
+                "tags": [
+                    "PagamentoClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente belonging to Pagamento",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "PagamentoClienteController.getCliente"
+            }
+        },
+        "/pagamentos/{id}": {
+            "put": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Pagamento PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Pagamento"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PagamentoController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Pagamento PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PagamentoPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PagamentoController.updateById"
+            },
+            "get": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pagamento model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagamentoWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Pagamento.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PagamentoController.findById"
+            },
+            "delete": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Pagamento DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "PagamentoController.deleteById"
+            }
+        },
+        "/pagamentos": {
+            "post": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pagamento model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Pagamento"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewPagamento"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PagamentoController.create"
+            },
+            "patch": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pagamento PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Pagamento.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Pagamento>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PagamentoPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PagamentoController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "PagamentoController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PagamentoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Pagamento model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PagamentoWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Pagamento.Filter1"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PagamentoController.find"
+            }
+        },
+        "/ping": {
+            "get": {
+                "x-controller-name": "PingController",
+                "x-operation-name": "ping",
+                "tags": [
+                    "PingController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ping Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PingResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "PingController.ping"
+            }
+        },
+        "/planos/count": {
+            "get": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "count",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Plano.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Plano>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlanoController.count"
+            }
+        },
+        "/planos/{id}/clientes": {
+            "post": {
+                "x-controller-name": "PlanoClienteController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PlanoClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewClienteInPlano"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlanoClienteController.create"
+            },
+            "patch": {
+                "x-controller-name": "PlanoClienteController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "PlanoClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano.Cliente PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Cliente.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Cliente>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClientePartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlanoClienteController.patch"
+            },
+            "get": {
+                "x-controller-name": "PlanoClienteController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PlanoClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Plano has many Cliente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cliente"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlanoClienteController.find"
+            },
+            "delete": {
+                "x-controller-name": "PlanoClienteController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "PlanoClienteController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano.Cliente DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Cliente.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Cliente>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlanoClienteController.delete"
+            }
+        },
+        "/planos/{id}": {
+            "put": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Plano PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Plano"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlanoController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Plano PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanoPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlanoController.updateById"
+            },
+            "get": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlanoWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plano.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlanoController.findById"
+            },
+            "delete": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Plano DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "operationId": "PlanoController.deleteById"
+            }
+        },
+        "/planos": {
+            "post": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plano"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewPlano"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PlanoController.create"
+            },
+            "patch": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plano PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Plano.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Plano>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlanoPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PlanoController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "PlanoController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PlanoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Plano model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PlanoWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plano.Filter1"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlanoController.find"
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "Plano": {
+                "title": "Plano",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "tipo_de_plano": {
+                        "type": "string"
+                    },
+                    "periodicidade": {
+                        "type": "string"
+                    },
+                    "preco": {
+                        "type": "number"
+                    },
+                    "armazenamento": {
+                        "type": "string"
+                    },
+                    "numero_de_contas_email": {
+                        "type": "number"
+                    },
+                    "numero_de_dominios": {
+                        "type": "number"
+                    },
+                    "largura_de_banda": {
+                        "type": "string"
+                    },
+                    "fidelizacao": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "tipo_de_plano",
+                    "periodicidade",
+                    "preco",
+                    "armazenamento",
+                    "numero_de_contas_email",
+                    "numero_de_dominios",
+                    "largura_de_banda",
+                    "fidelizacao"
+                ],
+                "additionalProperties": false
+            },
+            "NewPlano": {
+                "title": "NewPlano",
+                "type": "object",
+                "description": "(tsType: Omit<Plano, 'id'>, schemaOptions: { title: 'NewPlano', exclude: [ 'id' ] })",
+                "properties": {
+                    "tipo_de_plano": {
+                        "type": "string"
+                    },
+                    "periodicidade": {
+                        "type": "string"
+                    },
+                    "preco": {
+                        "type": "number"
+                    },
+                    "armazenamento": {
+                        "type": "string"
+                    },
+                    "numero_de_contas_email": {
+                        "type": "number"
+                    },
+                    "numero_de_dominios": {
+                        "type": "number"
+                    },
+                    "largura_de_banda": {
+                        "type": "string"
+                    },
+                    "fidelizacao": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "tipo_de_plano",
+                    "periodicidade",
+                    "preco",
+                    "armazenamento",
+                    "numero_de_contas_email",
+                    "numero_de_dominios",
+                    "largura_de_banda",
+                    "fidelizacao"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Plano, 'id'>"
+            },
+            "DominioWithRelations": {
+                "title": "DominioWithRelations",
+                "type": "object",
+                "description": "(tsType: DominioWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "codigo_TLD": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "boolean"
+                    },
+                    "data_de_inicio": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "data_de_fim": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    },
+                    "cliente": {
+                        "$ref": "#/components/schemas/ClienteWithRelations"
+                    },
+                    "foreignKey": {}
+                },
+                "required": [
+                    "nome",
+                    "codigo_TLD",
+                    "estado",
+                    "data_de_inicio",
+                    "data_de_fim"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "DominioWithRelations"
+            },
+            "PagamentoWithRelations": {
+                "title": "PagamentoWithRelations",
+                "type": "object",
+                "description": "(tsType: PagamentoWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "metodo_de_pagamento": {
+                        "type": "string"
+                    },
+                    "numero_de_transacao": {
+                        "type": "string"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    },
+                    "cliente": {
+                        "$ref": "#/components/schemas/ClienteWithRelations"
+                    },
+                    "foreignKey": {}
+                },
+                "required": [
+                    "timestamp",
+                    "valor",
+                    "metodo_de_pagamento",
+                    "numero_de_transacao"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "PagamentoWithRelations"
+            },
+            "ClienteWithRelations": {
+                "title": "ClienteWithRelations",
+                "type": "object",
+                "description": "(tsType: ClienteWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "tipo_de_conta": {
+                        "type": "string"
+                    },
+                    "numero_fiscal": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "contacto": {
+                        "type": "string"
+                    },
+                    "periodicidade_de_pagamento": {
+                        "type": "string"
+                    },
+                    "data_ultimo_pagamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "planoId": {
+                        "type": "number"
+                    },
+                    "plano": {
+                        "$ref": "#/components/schemas/PlanoWithRelations"
+                    },
+                    "foreignKey": {},
+                    "dominios": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DominioWithRelations"
+                        }
+                    },
+                    "pagamentos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PagamentoWithRelations"
+                        }
+                    }
+                },
+                "required": [
+                    "nome",
+                    "tipo_de_conta",
+                    "numero_fiscal",
+                    "email",
+                    "contacto",
+                    "periodicidade_de_pagamento",
+                    "data_ultimo_pagamento"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "ClienteWithRelations"
+            },
+            "PlanoWithRelations": {
+                "title": "PlanoWithRelations",
+                "type": "object",
+                "description": "(tsType: PlanoWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "tipo_de_plano": {
+                        "type": "string"
+                    },
+                    "periodicidade": {
+                        "type": "string"
+                    },
+                    "preco": {
+                        "type": "number"
+                    },
+                    "armazenamento": {
+                        "type": "string"
+                    },
+                    "numero_de_contas_email": {
+                        "type": "number"
+                    },
+                    "numero_de_dominios": {
+                        "type": "number"
+                    },
+                    "largura_de_banda": {
+                        "type": "string"
+                    },
+                    "fidelizacao": {
+                        "type": "string"
+                    },
+                    "clientes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ClienteWithRelations"
+                        }
+                    }
+                },
+                "required": [
+                    "tipo_de_plano",
+                    "periodicidade",
+                    "preco",
+                    "armazenamento",
+                    "numero_de_contas_email",
+                    "numero_de_dominios",
+                    "largura_de_banda",
+                    "fidelizacao"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "PlanoWithRelations"
+            },
+            "PlanoPartial": {
+                "title": "PlanoPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Plano>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "tipo_de_plano": {
+                        "type": "string"
+                    },
+                    "periodicidade": {
+                        "type": "string"
+                    },
+                    "preco": {
+                        "type": "number"
+                    },
+                    "armazenamento": {
+                        "type": "string"
+                    },
+                    "numero_de_contas_email": {
+                        "type": "number"
+                    },
+                    "numero_de_dominios": {
+                        "type": "number"
+                    },
+                    "largura_de_banda": {
+                        "type": "string"
+                    },
+                    "fidelizacao": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Plano>"
+            },
+            "Cliente": {
+                "title": "Cliente",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "tipo_de_conta": {
+                        "type": "string"
+                    },
+                    "numero_fiscal": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "contacto": {
+                        "type": "string"
+                    },
+                    "periodicidade_de_pagamento": {
+                        "type": "string"
+                    },
+                    "data_ultimo_pagamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "planoId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "nome",
+                    "tipo_de_conta",
+                    "numero_fiscal",
+                    "email",
+                    "contacto",
+                    "periodicidade_de_pagamento",
+                    "data_ultimo_pagamento"
+                ],
+                "additionalProperties": false
+            },
+            "NewClienteInPlano": {
+                "title": "NewClienteInPlano",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Cliente, 'id'>, 'planoId'>, schemaOptions: { title: 'NewClienteInPlano', exclude: [ 'id' ], optional: [ 'planoId' ] })",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "tipo_de_conta": {
+                        "type": "string"
+                    },
+                    "numero_fiscal": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "contacto": {
+                        "type": "string"
+                    },
+                    "periodicidade_de_pagamento": {
+                        "type": "string"
+                    },
+                    "data_ultimo_pagamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "planoId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "nome",
+                    "tipo_de_conta",
+                    "numero_fiscal",
+                    "email",
+                    "contacto",
+                    "periodicidade_de_pagamento",
+                    "data_ultimo_pagamento"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Cliente, 'id'>, 'planoId'>"
+            },
+            "ClientePartial": {
+                "title": "ClientePartial",
+                "type": "object",
+                "description": "(tsType: Partial<Cliente>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "tipo_de_conta": {
+                        "type": "string"
+                    },
+                    "numero_fiscal": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "contacto": {
+                        "type": "string"
+                    },
+                    "periodicidade_de_pagamento": {
+                        "type": "string"
+                    },
+                    "data_ultimo_pagamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "planoId": {
+                        "type": "number"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Cliente>"
+            },
+            "Pagamento": {
+                "title": "Pagamento",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "metodo_de_pagamento": {
+                        "type": "string"
+                    },
+                    "numero_de_transacao": {
+                        "type": "string"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "timestamp",
+                    "valor",
+                    "metodo_de_pagamento",
+                    "numero_de_transacao"
+                ],
+                "additionalProperties": false
+            },
+            "NewPagamento": {
+                "title": "NewPagamento",
+                "type": "object",
+                "description": "(tsType: Omit<Pagamento, 'id'>, schemaOptions: { title: 'NewPagamento', exclude: [ 'id' ] })",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "metodo_de_pagamento": {
+                        "type": "string"
+                    },
+                    "numero_de_transacao": {
+                        "type": "string"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "timestamp",
+                    "valor",
+                    "metodo_de_pagamento",
+                    "numero_de_transacao"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Pagamento, 'id'>"
+            },
+            "PagamentoPartial": {
+                "title": "PagamentoPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Pagamento>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "metodo_de_pagamento": {
+                        "type": "string"
+                    },
+                    "numero_de_transacao": {
+                        "type": "string"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Pagamento>"
+            },
+            "Dominio": {
+                "title": "Dominio",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "codigo_TLD": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "boolean"
+                    },
+                    "data_de_inicio": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "data_de_fim": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "nome",
+                    "codigo_TLD",
+                    "estado",
+                    "data_de_inicio",
+                    "data_de_fim"
+                ],
+                "additionalProperties": false
+            },
+            "NewDominio": {
+                "title": "NewDominio",
+                "type": "object",
+                "description": "(tsType: Omit<Dominio, 'id'>, schemaOptions: { title: 'NewDominio', exclude: [ 'id' ] })",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "codigo_TLD": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "boolean"
+                    },
+                    "data_de_inicio": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "data_de_fim": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "nome",
+                    "codigo_TLD",
+                    "estado",
+                    "data_de_inicio",
+                    "data_de_fim"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Dominio, 'id'>"
+            },
+            "DominioPartial": {
+                "title": "DominioPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Dominio>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "codigo_TLD": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "boolean"
+                    },
+                    "data_de_inicio": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "data_de_fim": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Dominio>"
+            },
+            "NewCliente": {
+                "title": "NewCliente",
+                "type": "object",
+                "description": "(tsType: Omit<Cliente, 'id'>, schemaOptions: { title: 'NewCliente', exclude: [ 'id' ] })",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "tipo_de_conta": {
+                        "type": "string"
+                    },
+                    "numero_fiscal": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "contacto": {
+                        "type": "string"
+                    },
+                    "periodicidade_de_pagamento": {
+                        "type": "string"
+                    },
+                    "data_ultimo_pagamento": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "planoId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "nome",
+                    "tipo_de_conta",
+                    "numero_fiscal",
+                    "email",
+                    "contacto",
+                    "periodicidade_de_pagamento",
+                    "data_ultimo_pagamento"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Cliente, 'id'>"
+            },
+            "NewPagamentoInCliente": {
+                "title": "NewPagamentoInCliente",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Pagamento, 'id'>, 'clienteId'>, schemaOptions: { title: 'NewPagamentoInCliente', exclude: [ 'id' ], optional: [ 'clienteId' ] })",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "metodo_de_pagamento": {
+                        "type": "string"
+                    },
+                    "numero_de_transacao": {
+                        "type": "string"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "timestamp",
+                    "valor",
+                    "metodo_de_pagamento",
+                    "numero_de_transacao"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Pagamento, 'id'>, 'clienteId'>"
+            },
+            "NewDominioInCliente": {
+                "title": "NewDominioInCliente",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Dominio, 'id'>, 'clienteId'>, schemaOptions: { title: 'NewDominioInCliente', exclude: [ 'id' ], optional: [ 'clienteId' ] })",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "codigo_TLD": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "boolean"
+                    },
+                    "data_de_inicio": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "data_de_fim": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "clienteId": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "nome",
+                    "codigo_TLD",
+                    "estado",
+                    "data_de_inicio",
+                    "data_de_fim"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Dominio, 'id'>, 'clienteId'>"
+            },
+            "loopback.Count": {
+                "type": "object",
+                "title": "loopback.Count",
+                "x-typescript-type": "@loopback/repository#Count",
+                "properties": {
+                    "count": {
+                        "type": "number"
+                    }
+                }
+            },
+            "Cliente.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Cliente.ScopeFilter"
+            },
+            "Cliente.IncludeFilter.Items": {
+                "title": "Cliente.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string",
+                        "enum": [
+                            "plano",
+                            "dominios",
+                            "pagamentos"
+                        ]
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Cliente.ScopeFilter"
+                    }
+                }
+            },
+            "Cliente.Filter": {
+                "type": "object",
+                "title": "Cliente.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nome": {
+                                        "type": "boolean"
+                                    },
+                                    "tipo_de_conta": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_fiscal": {
+                                        "type": "boolean"
+                                    },
+                                    "email": {
+                                        "type": "boolean"
+                                    },
+                                    "contacto": {
+                                        "type": "boolean"
+                                    },
+                                    "periodicidade_de_pagamento": {
+                                        "type": "boolean"
+                                    },
+                                    "data_ultimo_pagamento": {
+                                        "type": "boolean"
+                                    },
+                                    "planoId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nome",
+                                        "tipo_de_conta",
+                                        "numero_fiscal",
+                                        "email",
+                                        "contacto",
+                                        "periodicidade_de_pagamento",
+                                        "data_ultimo_pagamento",
+                                        "planoId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Cliente.Fields"
+                    },
+                    "include": {
+                        "title": "Cliente.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Cliente.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Cliente>"
+            },
+            "Cliente.Filter1": {
+                "type": "object",
+                "title": "Cliente.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Cliente.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nome": {
+                                        "type": "boolean"
+                                    },
+                                    "tipo_de_conta": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_fiscal": {
+                                        "type": "boolean"
+                                    },
+                                    "email": {
+                                        "type": "boolean"
+                                    },
+                                    "contacto": {
+                                        "type": "boolean"
+                                    },
+                                    "periodicidade_de_pagamento": {
+                                        "type": "boolean"
+                                    },
+                                    "data_ultimo_pagamento": {
+                                        "type": "boolean"
+                                    },
+                                    "planoId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nome",
+                                        "tipo_de_conta",
+                                        "numero_fiscal",
+                                        "email",
+                                        "contacto",
+                                        "periodicidade_de_pagamento",
+                                        "data_ultimo_pagamento",
+                                        "planoId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Cliente.Fields"
+                    },
+                    "include": {
+                        "title": "Cliente.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Cliente.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Cliente>"
+            },
+            "Dominio.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Dominio.ScopeFilter"
+            },
+            "Dominio.IncludeFilter.Items": {
+                "title": "Dominio.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string",
+                        "enum": [
+                            "cliente"
+                        ]
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Dominio.ScopeFilter"
+                    }
+                }
+            },
+            "Dominio.Filter": {
+                "type": "object",
+                "title": "Dominio.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nome": {
+                                        "type": "boolean"
+                                    },
+                                    "codigo_TLD": {
+                                        "type": "boolean"
+                                    },
+                                    "estado": {
+                                        "type": "boolean"
+                                    },
+                                    "data_de_inicio": {
+                                        "type": "boolean"
+                                    },
+                                    "data_de_fim": {
+                                        "type": "boolean"
+                                    },
+                                    "clienteId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nome",
+                                        "codigo_TLD",
+                                        "estado",
+                                        "data_de_inicio",
+                                        "data_de_fim",
+                                        "clienteId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Dominio.Fields"
+                    },
+                    "include": {
+                        "title": "Dominio.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Dominio.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Dominio>"
+            },
+            "Dominio.Filter1": {
+                "type": "object",
+                "title": "Dominio.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Dominio.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nome": {
+                                        "type": "boolean"
+                                    },
+                                    "codigo_TLD": {
+                                        "type": "boolean"
+                                    },
+                                    "estado": {
+                                        "type": "boolean"
+                                    },
+                                    "data_de_inicio": {
+                                        "type": "boolean"
+                                    },
+                                    "data_de_fim": {
+                                        "type": "boolean"
+                                    },
+                                    "clienteId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nome",
+                                        "codigo_TLD",
+                                        "estado",
+                                        "data_de_inicio",
+                                        "data_de_fim",
+                                        "clienteId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Dominio.Fields"
+                    },
+                    "include": {
+                        "title": "Dominio.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Dominio.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Dominio>"
+            },
+            "Pagamento.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Pagamento.ScopeFilter"
+            },
+            "Pagamento.IncludeFilter.Items": {
+                "title": "Pagamento.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string",
+                        "enum": [
+                            "cliente"
+                        ]
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Pagamento.ScopeFilter"
+                    }
+                }
+            },
+            "Pagamento.Filter": {
+                "type": "object",
+                "title": "Pagamento.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "timestamp": {
+                                        "type": "boolean"
+                                    },
+                                    "valor": {
+                                        "type": "boolean"
+                                    },
+                                    "metodo_de_pagamento": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_de_transacao": {
+                                        "type": "boolean"
+                                    },
+                                    "clienteId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "timestamp",
+                                        "valor",
+                                        "metodo_de_pagamento",
+                                        "numero_de_transacao",
+                                        "clienteId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Pagamento.Fields"
+                    },
+                    "include": {
+                        "title": "Pagamento.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Pagamento.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Pagamento>"
+            },
+            "Pagamento.Filter1": {
+                "type": "object",
+                "title": "Pagamento.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Pagamento.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "timestamp": {
+                                        "type": "boolean"
+                                    },
+                                    "valor": {
+                                        "type": "boolean"
+                                    },
+                                    "metodo_de_pagamento": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_de_transacao": {
+                                        "type": "boolean"
+                                    },
+                                    "clienteId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "timestamp",
+                                        "valor",
+                                        "metodo_de_pagamento",
+                                        "numero_de_transacao",
+                                        "clienteId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Pagamento.Fields"
+                    },
+                    "include": {
+                        "title": "Pagamento.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Pagamento.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Pagamento>"
+            },
+            "PingResponse": {
+                "type": "object",
+                "title": "PingResponse",
+                "properties": {
+                    "greeting": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "properties": {
+                            "Content-Type": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                }
+            },
+            "Plano.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Plano.ScopeFilter"
+            },
+            "Plano.IncludeFilter.Items": {
+                "title": "Plano.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string",
+                        "enum": [
+                            "clientes"
+                        ]
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Plano.ScopeFilter"
+                    }
+                }
+            },
+            "Plano.Filter": {
+                "type": "object",
+                "title": "Plano.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "tipo_de_plano": {
+                                        "type": "boolean"
+                                    },
+                                    "periodicidade": {
+                                        "type": "boolean"
+                                    },
+                                    "preco": {
+                                        "type": "boolean"
+                                    },
+                                    "armazenamento": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_de_contas_email": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_de_dominios": {
+                                        "type": "boolean"
+                                    },
+                                    "largura_de_banda": {
+                                        "type": "boolean"
+                                    },
+                                    "fidelizacao": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "tipo_de_plano",
+                                        "periodicidade",
+                                        "preco",
+                                        "armazenamento",
+                                        "numero_de_contas_email",
+                                        "numero_de_dominios",
+                                        "largura_de_banda",
+                                        "fidelizacao"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Plano.Fields"
+                    },
+                    "include": {
+                        "title": "Plano.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Plano.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Plano>"
+            },
+            "Plano.Filter1": {
+                "type": "object",
+                "title": "Plano.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Plano.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "tipo_de_plano": {
+                                        "type": "boolean"
+                                    },
+                                    "periodicidade": {
+                                        "type": "boolean"
+                                    },
+                                    "preco": {
+                                        "type": "boolean"
+                                    },
+                                    "armazenamento": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_de_contas_email": {
+                                        "type": "boolean"
+                                    },
+                                    "numero_de_dominios": {
+                                        "type": "boolean"
+                                    },
+                                    "largura_de_banda": {
+                                        "type": "boolean"
+                                    },
+                                    "fidelizacao": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "tipo_de_plano",
+                                        "periodicidade",
+                                        "preco",
+                                        "armazenamento",
+                                        "numero_de_contas_email",
+                                        "numero_de_dominios",
+                                        "largura_de_banda",
+                                        "fidelizacao"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Plano.Fields"
+                    },
+                    "include": {
+                        "title": "Plano.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/Plano.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Plano>"
+            }
+        }
+    }
+}
