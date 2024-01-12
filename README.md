@@ -27,7 +27,7 @@ Este projeto consiste em duas partes: uma API construída com LoopBack 4 para ge
 2. Navegue até a pasta raiz do projeto:
 
     ```CMD
-    cd webhoster
+    cd INF23DW1G21M3
     ```
 
 3. Execute o seguinte comando para iniciar o projeto utilizando o Docker Compose:
